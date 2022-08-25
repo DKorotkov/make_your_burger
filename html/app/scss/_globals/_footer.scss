@@ -1,0 +1,82 @@
+@use "__config" as *;
+
+.footer {
+   display: flex;
+   flex-direction: column;
+   gap: rem(30);
+   padding: rem(20) 0;
+
+   @media (min-width: 50rem) {
+      flex-direction: row;
+      justify-content: space-between;
+   }
+
+   @media (min-width: 50rem) {
+      &__links > * {
+         position: relative;
+      }
+
+      &__links > *:not(:first-child)::before {
+         position: absolute;
+         top: 0;
+         left: calc(-1 * rem(5));
+         content: '';
+         width: rem(1);
+         height: 100%;
+         background-color: var(--clr-muted);
+      }
+   }
+
+   &__inforamtion {
+      display: flex;
+      flex-direction: column;
+      gap: rem(5);
+      align-items: center;
+      font-size: var(--fs-12);
+      color: var(--clr-muted);
+      @media (min-width: 50rem) {
+         flex-direction: row;
+         gap: rem(10);
+      }
+   }
+
+   &__links {
+      display: flex;
+      align-self: stretch;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      @media (min-width: 50rem) {
+         align-self: center;
+         gap: rem(10);
+      }
+   }
+
+   &__link {
+      color: var(--clr-primary);
+      text-decoration: none;
+   }
+
+   &__link:where(:hover, :focus-visible) {
+      text-decoration: underline;
+   }
+
+   &__payment {
+      order: -1;
+      @media (min-width: 50rem) {
+         order: 0;
+      }
+   }
+
+   &__payment-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(8);
+      justify-content: space-evenly;
+   }
+
+   &__payment-item {
+      display: block;
+      width: rem(35);
+      height: rem(24);
+   }
+}

@@ -48,16 +48,16 @@ svg {
 // ----------------------------------------------СТАНДАРТНЫЕ КЛАССЫ---------------------------------------------
 
 // _____________Футер к низу_______________
-.body-main {
+.body {
    display: flex;
    flex-direction: column;
 }
-.page-main {
+.main {
    flex-grow: 1;
 }
-.header-main,
-.page-main,
-.footer-main {
+.header,
+.main,
+.footer {
    flex-shrink: 0;
 }
 
@@ -72,6 +72,8 @@ svg {
       padding-top: 2rem;
       padding-bottom: 2rem;
    }
+
+   
 }
 
 // .container {

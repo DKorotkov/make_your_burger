@@ -65,10 +65,10 @@
    <!-- Ссылка на изображение -->
    <meta name="twitter:image" content="img/img1.jpeg" />
 
-   <link rel="stylesheet" href="css/header.min.css?_v=20220825084437" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20220825084437" />
+   <link rel="stylesheet" href="css/header.min.css?_v=20220825113405" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20220825113405" />
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220825084437" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220825113405" rel="stylesheet" />
 
    <!-- Здесь загружается иконочный шрифт, если иконки используються в верхней части страницы -->
    <!-- <link rel="preload" href="/fonts/fontello.woff" as="font" /> -->
@@ -137,21 +137,65 @@
    </button>
 </header>
 
-<!-- 
-   TODO:
- -->
-
          <main class="main" id="main-content"></main>
-         <footer class="footer"></footer>
- <!-- js для загрухки шрифтов по времени, событию или из кэша -->
-<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220825084437"></script> -->
-<!-- ленивая загрузка изображений -->
-<!-- <script defer src="js/lazyload.min.js?_v=20220825084437"></script> -->
-<!-- <script src="js/ls.bgset.js?_v=20220825084437"></script> -->
-<!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
-<script src="js/focus-visible.min.js?_v=20220825084437"></script>
+         <footer class="footer">
+   <div class="footer__inforamtion">
+      2022. Make Your Burger
+      <ul class="footer__links">
+         <li><a class="footer__link" href="#">Privacy Policy</a></li>
+         <li><a class="footer__link" href="#">Terms & Conditions</a></li>
+      </ul>
+   </div>
 
-<script src="js/script.min.js?_v=20220825084437"></script>
+   <div class="footer__payment">
+      <ul class="footer__payment-list" role="list" aria-label="Payment methods">
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="visa"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-visa"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="mastercard"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-mastercard"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="google pay"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-gpay"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="apple pay"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-apple-pay"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="paypal"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-paypal"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="bitcoin"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-bitcoin"></use></svg>
+            </a>
+         </li>
+         <li>
+            <a class="footer__payment-item" href="#">
+               <svg role="img" aria-label="etherium"><use xlink:href="files/svg_icons/payment-sprite.svg#payment-etherium"></use></svg>
+            </a>
+         </li>
+      </ul>
+   </div>
+</footer>
+ <!-- js для загрухки шрифтов по времени, событию или из кэша -->
+<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220825113405"></script> -->
+<!-- ленивая загрузка изображений -->
+<!-- <script defer src="js/lazyload.min.js?_v=20220825113405"></script> -->
+<!-- <script src="js/ls.bgset.js?_v=20220825113405"></script> -->
+<!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
+<script src="js/focus-visible.min.js?_v=20220825113405"></script>
+
+<script src="js/script.min.js?_v=20220825113405"></script>
 
       </div>
    </body>
