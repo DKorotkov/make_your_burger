@@ -1,0 +1,156 @@
+@use "__config" as *;
+
+.nav {
+   display: flex;
+   position: absolute;
+   top: -30px;
+   left: 0;
+   flex-direction: column;
+   opacity: 0;
+   height: calc(100vh - var(--sz-navigation));
+   width: 100%;
+   margin-top: var(--sz-navigation);
+   justify-content: space-between;
+   padding: rem(24) 0 rem(48);
+   pointer-events: none;
+   transition: all .3s ease;
+
+   @media (min-width: 50rem) {
+      position: static;
+      flex-direction: row;
+      opacity: 1;
+      background-color: transparent;
+      height: auto;
+      width: auto;
+      margin-top: 0;
+      pointer-events: all;
+      padding: 0;
+      align-items: center;
+      gap: rem(20);
+      flex-grow: 1;
+      justify-content: flex-end;
+   }
+
+   @media (min-width: 68rem) { 
+      gap: rem(60);
+   }
+
+   &--active {
+      top: 0;
+      opacity: 1;
+      background-color: var(--clr-white);
+      pointer-events: all;
+   }
+
+   &--active ~ .header__nav-btn > .header__nav-btn-open {
+      display: none;
+   }
+
+   &--active ~ .header__nav-btn > .header__nav-btn-close {
+      display: block;
+   }
+
+   &__call {
+      display: none;
+      @media (min-width: 50rem) { 
+         display: block;
+      }
+   }
+
+   &__phone {
+      font-weight: var(--fw-semi-bold);
+      text-decoration: none;
+      color: var(--clr-black);
+      text-align: center;
+      order: -1;
+      @media (min-width: 50rem) { 
+         order: 0;
+      }
+   }
+
+   &__phone:hover,
+   &__phone:focus-visible {
+      text-decoration: underline;
+   }
+
+   &__box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: rem(54);
+      @media (min-width: 50rem) {
+         flex-direction: row;
+         align-items: center;
+         gap: rem(20);
+      }
+
+      @media (min-width: 68rem) { 
+         gap: rem(59);
+      }
+   }
+
+   &__item {
+   }
+
+   &__person {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: rem(16);
+      @media (min-width: 50rem) { 
+         height: 100%;
+      }
+   }
+
+   &__person-img-wrapper {
+      display: flex;
+      position: relative;
+      width: rem(58);
+      aspect-ratio: 1;
+      border-radius: 100%;
+      background-color: var(--clr-titan-white);
+      text-align: center;
+      place-items: center;
+      @media (min-width: 50rem) { 
+         width: auto;
+         height: 100%;
+      }
+   }
+
+   &__person-img-head {
+      position: relative;
+      top: 2%;
+      width: 40%;
+      aspect-ratio: 1;
+      @media (min-width: 50rem) { 
+         // width: auto;
+         top: 28%;
+         height: 40%;
+      }
+   }
+
+   &__person-img-flag {
+      position: absolute;
+      top: 54%;
+      left: 53%;
+      width: 20%;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      border: rem(1) solid var(--clr-titan-white);
+      background-size: cover; 
+   }
+
+   &__person-img-flag--uk {
+      background-image: url('../img/flag-ukraine.jpg');
+   }
+
+   &__person-name {
+      font-weight: var(--fw-semi-bold);
+      @media (min-width: 50rem) { 
+         display: none;
+      }
+   }
+}
+

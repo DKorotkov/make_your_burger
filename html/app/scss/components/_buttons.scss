@@ -1,0 +1,37 @@
+@use "__config" as *;
+
+
+.btn-main {
+   border: rem(1) solid var(--color-black);
+   color: var(--color-white);
+   background-color: var(--color-primary);
+   // border-radius: var(--border-radius);
+   border-radius: 100vmax;
+   padding: rem(20) rem(30);
+}
+
+.btn-main:hover,
+.btn-main:focus-visible {
+   
+}
+
+.btn-call {
+   display: flex;
+   border-radius: rem(99);
+   background-color: var(--clr-red-200);
+   margin: 0;
+   border: none;
+   place-items: center;
+   color: var(--clr-danger);
+   padding: rem(6) rem(12);
+   gap: rem(3);
+   align-self: center;
+   font-weight: var(--fw-semi-bold);
+   cursor: pointer;
+
+   &__icon {
+      fill: var(--clr-danger);
+      width: rem(16);
+      aspect-ratio: 1;
+   }
+}

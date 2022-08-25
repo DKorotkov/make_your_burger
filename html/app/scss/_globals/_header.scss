@@ -1,0 +1,68 @@
+@use "__config" as *;
+
+.header {
+   display: flex;
+   position: relative;
+   height: var(--sz-navigation);
+   justify-content: space-between;
+   
+
+   @media (min-width: 50rem) { 
+      justify-content: flex-start;
+      gap: rem(40);
+   }
+
+   @media (min-width: 68rem) { 
+      gap: rem(80);
+   }
+
+   &__icon {
+      display: flex;
+      background-color: var(--clr-titan-white);
+      border-radius: 100%;
+      aspect-ratio: 1;
+      place-content: center;
+      align-items: center;
+      z-index: 10;
+   }
+
+   &__icon-svg {
+      fill: var(--clr-primary);
+      width: 35%;
+      aspect-ratio: 1;
+      @media (min-width: 50rem) { 
+         width: 20%;
+      }
+   }
+
+   &__nav-list {
+      @media (min-width: 50rem) { 
+         margin-right: auto;
+         opacity: 1!important;
+      }
+   }
+
+   &__nav-btn {
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      @media (min-width: 50rem) { 
+         display: none;
+      }
+   }
+
+   // &__nav-btn-open {}
+
+   &__nav-btn-close {
+      display: none;
+   }
+
+   &__call {
+      z-index: 10;
+      @media (min-width: 50rem) { 
+         display: none;
+      }
+   }
+}
+
+

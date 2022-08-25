@@ -1,0 +1,223 @@
+@use "__config" as *;
+@use "sass:map";
+
+// --------------------------------------ОБНУЛЕНИE И ОБЩИЕ ПАРАМЕТРЫ--------------------------------------
+
+// необходимо Модофицировать этот элемент только для тех, на кого может попасть фокус
+* {
+   outline-offset: 0;
+   transition: outline-offset 0.2s linear;
+}
+
+html,
+body {
+   width: 100%;
+   min-width: var(--minWidth);
+}
+
+body {
+   // font-family: system-ui, system, sans-serif;
+   font-family: var(--ff-body);
+   font-size: var(--fs-body);
+   background-size: cover;
+}
+
+// ____Класс для объявления шрифты после его загрузки_____
+.fonts-loaded body:root {
+    
+      --ff-main: "Pangolin", serif;
+   
+}
+
+*::selection { // Цвет выделения текста
+   background-color: var(--clr-primary);
+   color: var(--clr-white);
+}
+
+img,
+picture,
+svg {
+   width: 100%;
+   max-width: 100%;
+   height: inherit;
+   object-fit: cover;
+   // aspect-ratio: attr(width) / attr(height);
+   // background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7);
+}
+
+// ----------------------------------------------СТАНДАРТНЫЕ КЛАССЫ---------------------------------------------
+
+// _____________Футер к низу_______________
+.body-main {
+   display: flex;
+   flex-direction: column;
+}
+.page-main {
+   flex-grow: 1;
+}
+.header-main,
+.page-main,
+.footer-main {
+   flex-shrink: 0;
+}
+
+// ____________________Обычный контейнер для респонза_________
+.container {
+   --padding: 1rem;
+   width: min(var(--maxWidth), 100% - (var(--padding) * 2));
+   margin-inline: auto;
+   
+   @media (min-width: 50rem) { 
+      --padding: 1rem - 8.33%;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+   }
+}
+
+// .container {
+//    margin-inline: auto;
+//    padding: 0 var(--space-container-padding);
+
+//    // Ограничиваем стили для мобильных
+//    @include media('<=phone') {
+//       // padding: 0 var(--space-md);
+//       min-width: var(--minWidth);
+//    }
+
+//    @include media('>phone') {
+//       // padding: 0 var(--space-lg);
+//       max-width: calc(var(--space-container-padding) * 2 + map.get($breakpoints, 'phone'));
+//    }
+
+//    @include media('>=tablet') {
+//       max-width: calc(var(--space-container-padding) * 2 + map.get($breakpoints, 'tablet'));
+//    }
+
+//    @include media('>=laptop') {
+//       max-width: calc(var(--space-container-padding) * 2 + map.get($breakpoints, 'laptop'));
+//    }
+
+//    @include media('>=desktop') {
+//       max-width: calc(var(--space-container-padding) * 2 + map.get($breakpoints, 'desktop'));
+//    }
+// }
+
+// __________________Класс для скрытия от всех__________________________________
+.hide {
+   display: none;
+   &__mobile {
+      @include media('<=phone') {
+         display: none;
+      }
+   }
+   &__desktop {
+      @include media('>phone') {
+         display: none;
+      }
+   }
+}
+
+// _________________Класс для скрытия блоков, но сохранения для скрин ридеров____________
+.clipped {
+   position: absolute !important;
+   clip: rect(1px 1px 1px 1px);
+   clip: rect(1px, 1px, 1px, 1px);
+   padding: 0 !important;
+   border: 0 !important;
+   height: 1px !important;
+   width: 1px !important;
+   overflow: hidden;
+}
+
+// _________________Класс для кнопки "Пропустить навигацию____________
+.skip-nav-link {
+   position: absolute;
+   left: rem(5);
+   transform: translateY(-200%);
+   transition: transform 300ms ease-in;
+
+   background-color: #fff;
+   padding: rem(5) rem(10);
+
+   &:focus {
+      transform: translateY(-100%);
+   }
+}
+
+// ________Класс для полифила focus_____________________
+.js-focus-visible :focus:not(.focus-visible) {
+   outline: none;
+}
+.focus-visible {
+   @include focus;
+}
+
+// __________Класс для работы с grid___________________
+[class|="grid"] {
+   display: grid;
+   gap: rem(10);
+}
+
+.grid- {
+   &auto-columns {
+      grid-template-columns: repeat(auto-fit, minmax(min(rem(150), 100%), 1fr));
+   }
+
+   &even-columns {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+   }
+}
+
+// where делает специфичность калсса = 0, а сам селектор можно использовать для организации отстов
+:where(.flow :not(:first-child)) {
+   margin-top: 1rem;
+}
+
+// __________Класс для работы с переменными___________________
+.fw-regular {
+   font-weight: var(--fw-regular);
+}
+
+.fs-16 {
+   font-size: var(--fs-16);
+}
+
+.padding-block-400 {
+   padding-block: var(--space-sm);
+}
+
+.font-h1 {
+   font-family: var(--ff-heading);
+   font-size: var(--fs-48);
+
+   @media (min-width: (50rem)) { 
+      font-size: var(--fs-72);
+      font-weight: var(--fw-bold);
+      line-height: 1.1;
+   }
+}
+
+.font-h2 {
+   font-family: var(--ff-heading);
+   font-size: var(--fs-48);
+   font-weight: var(--fw-semi-bold);
+}
+
+.font-h3 {
+   font-family: var(--ff-heading);
+   font-size: var(--fs-36);
+   font-weight: var(--fw-semi-bold);
+}
+
+.font-h4 {
+   font-family: var(--ff-heading);
+   font-size: var(--fs-24);
+   font-weight: var(--fw-semi-bold);
+}
+
+.font-h5 {
+   font-family: var(--ff-heading);
+   font-size: var(--fs-20);
+   font-weight: var(--fw-semi-bold);
+}

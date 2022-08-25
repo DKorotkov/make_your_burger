@@ -1,0 +1,123 @@
+@use "_include-media" as *;
+
+// -----------------------------------------ПЕРЕМЕННЫЕ-----------------------------------------------
+
+//Точки в bootstrap sm-540px	md-720px	lg-960px	xl-1140px
+// @media (min-width:320px) { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+// @media (min-width:480px) { /* smartphones, Android phones, landscape iPhone */ }
+// @media (min-widtТ:600px) { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+// @media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+// @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+// @media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+// $minWidth: 320; // минимальным размер экрана
+// $maxWidth: 1140; // максимальный размер экрана
+
+:root {
+   --minWidth: 320px;
+   --maxWidth: 1400px;
+}
+
+// ____________________Брейкпоинты__________________________________
+// $md0: 520;
+// $md1: 521;
+// $md2: 720;
+// $md3: 960;
+// $md4: 1140;
+
+// :root {
+//    --md0: 520px;
+//    --md1: 521px;
+//    --md2: 720px;
+//    --md3: 960px;
+//    --md4: 1140px;
+// }
+
+
+
+:root {
+   // _____________________Размеры отступов_________________________________
+      --space-unit: 1em;
+   
+      --space-xxxxs: calc(0.125 * var(--space-unit));
+      --space-xxxs: calc(0.25 * var(--space-unit));
+      --space-xxs: calc(0.375 * var(--space-unit));
+      --space-xs: calc(0.5 * var(--space-unit));
+      --space-sm: calc(0.75 * var(--space-unit));
+      --space-md: calc(1.25 * var(--space-unit));
+      --space-lg: calc(2 * var(--space-unit));
+      --space-xl: calc(3.25 * var(--space-unit));
+      --space-xxl: calc(5.25 * var(--space-unit));
+      --space-xxxl: calc(8.5 * var(--space-unit));
+      --space-xxxxl: calc(13.75 * var(--space-unit));
+   
+      --component-padding: var(--space-md);
+
+   // ____________________Цвета_________________________________________
+   --clr-primary: #5243C2;
+   --clr-danger:#FF4D4F;
+   --clr-black:#1F2939;
+   --clr-muted:#949BA6;
+   --clr-titan-white:#F5F5FF;
+   --clr-black-squeeze:#F0F7FA;
+   --clr-white:#FFF;
+
+   --clr-red-500:#FF4D4F;
+   --clr-red-400:#FF9293;
+   --clr-red-300:#FFC8C8;
+   --clr-red-200:#FFEDED;
+
+   --clr-indigo-600: #473AA6;
+   --clr-indigo-500: #5243C2;
+
+   --clr-gray-200: #D5D5D5;
+   --clr-gray-100: #F4F4F4;
+
+
+
+   // _____________________Шрифт_________________________________
+   --ff-main: 'Open Sans', serif;
+
+   --ff-body: var(--ff-main);
+   --ff-heading: var(--ff-main);
+   
+   --fw-thin: 100;
+   --fw-ultra-light: 200;
+   --fw-light: 300;
+   --fw-regular: 400;
+   --fw-medium: 500;
+   --fw-semi-bold: 600;
+   --fw-bold: 700;
+   --fw-extra-bold: 800;
+   --fw-heavy: 900;
+   
+   --fs-16: 1rem;
+   --fs-18: 1.125rem;
+   --fs-19: 1.1875rem;
+   --fs-20: 1.25rem;
+   --fs-22: 1.375rem;
+   --fs-24: 1.5rem;
+   --fs-32: 2rem;
+   --fs-35: 2.1875rem;
+   --fs-36: 2.25rem;
+   --fs-40: 2.5rem;
+   --fs-48: 3rem;
+   --fs-50: 3.125rem;
+   --fs-55: 3.4375rem;
+   --fs-58: 3.625rem;
+   --fs-65: 4.0625rem;
+   --fs-72: 4.5rem;
+
+   --fs-body: var(--fs-16);
+   --fs-primary-btn: var(--fs-15);
+   --fs-nav: var(--fs-20);
+
+   // _____________________Общие настройки_________________________________
+   --sz-navigation: 3rem;
+   --space-container-padding: var(--space-md);
+   --bd-radius: 2rem;
+
+   @media (min-width: 50rem) { 
+      --sz-navigation: 5rem;
+   }
+}
