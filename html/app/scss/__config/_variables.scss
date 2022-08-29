@@ -14,7 +14,7 @@
 // $maxWidth: 1140; // максимальный размер экрана
 
 :root {
-   --minWidth: 320px;
+   --minWidth: 310px;
    --maxWidth: 1400px;
 }
 
@@ -115,11 +115,14 @@
    --fs-nav: var(--fs-20);
 
    // _____________________Общие настройки_________________________________
-   --sz-navigation: 3rem;
+   --sz-pd-navigation: 1rem;
+   --sz-h-navigation: 3rem;
+   --sz-navigation: calc(var(--sz-h-navigation) + var(--sz-pd-navigation));
    --space-container-padding: var(--space-md);
    --bd-radius: 2rem;
 
    @media (min-width: 50rem) { 
-      --sz-navigation: 5rem;
+      --sz-pd-navigation: 2rem;
+      --sz-h-navigation: 5rem;
    }
 }

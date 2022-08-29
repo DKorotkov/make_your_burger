@@ -1,24 +1,32 @@
 @use "__config" as *;
 
 .header {
-   display: flex;
-   position: relative;
-   height: var(--sz-navigation);
-   justify-content: space-between;
-   
+   position: fixed;
+   top: 0;
+   right: 0;
+   left: 0;
+   background-color: var(--clr-white);
+   padding-top: var(--sz-pd-navigation);
 
-   @media (min-width: 50rem) { 
-      justify-content: flex-start;
-      gap: rem(40);
-   }
-
-   @media (min-width: 68rem) { 
-      gap: rem(80);
-   }
 
    &__container {
-      padding-top: rem(20);
+      display: flex;
+      position: relative;
+      height: var(--sz-h-navigation);
+      
+      
+      justify-content: space-between;
+
+      @media (min-width: 50rem) { 
+         justify-content: flex-start;
+         gap: rem(40);
+      }
+
+      @media (min-width: 68rem) { 
+         gap: rem(80);
+      }
    }
+   
 
    &__icon {
       display: flex;

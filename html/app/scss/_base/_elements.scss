@@ -67,11 +67,10 @@ svg {
    --padding: 1rem;
    width: min(var(--maxWidth), 100% - (var(--padding) * 2));
    margin-inline: auto;
+   min-width: var(--minWidth);
    
    @media (min-width: 50rem) { 
       --padding: 1rem - 8.33%;
-      // padding-top: 2rem;
-      // padding-bottom: 2rem;
    }
 
    

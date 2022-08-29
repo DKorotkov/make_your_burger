@@ -1,76 +1,21 @@
 @use "__config" as *;
 
 .main {
-   
+   padding-top: var(--sz-navigation);
 
    &__container {
       display: flex;
-      padding: rem(48) 0 rem(24);
-      height: 100%;
       flex-direction: column;
-      @media (min-width: 50rem) {
-         display: grid;
-         grid-template-columns: 1fr 3fr;
-         grid-template-rows: auto;
-         column-gap: 15%;
-         padding-top: 0;
-         // padding-bottom: rem(24);
-      }
-
-      @media (min-width: 80rem) {
-         column-gap: 20%;
-      }
-   }
-
-   &__loading {
-      display: flex;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      font-weight: var(--fw-bold);
-      font-size: var(--fs-36);
-      color: var(--clr-blue-chalk);
-      align-items: baseline;
       gap: rem(20);
-   }
-
-   &__discover:not(.loading) &__loading {
-      display: none;
+      @media (min-width: 50rem) {
+         flex-direction: row;
+         height: 100%;
+         align-items: center;
+         gap: 20%;
+      }
    }
 
    &__offer {
-      display: inline-block;
-      // padding-bottom: em(30,48);
-      @media (min-width: 50rem) {
-         align-self: center;
-      }
-   }
-
-   &__content {
-      position: relative;
-      flex-grow: 1;
-      // min-height: 50vh;
-      overflow-x: hidden;
-      @media (min-width: 50rem) {
-         min-height: auto;
-         overflow-x: visible;
-      }
-   }
-
-   &__discover {
-   }
-
-   &__burger {
-   }
-
-   &__ingredients {
-      grid-row: 2;
-      grid-column: span 2;
-   }
-
-   &__ingredients:empty {
-      display: none;
+      flex-basis: 20%;
    }
 }

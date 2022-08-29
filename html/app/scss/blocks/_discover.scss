@@ -1,36 +1,43 @@
 @use "__config" as *;
 
 .discover {
+   display: flex;
+   position: relative;
+   aspect-ratio: 1;
+   align-items: center;
+   justify-content: center;
    background-image: url("../files/svg_icons/bg_burger.svg");
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center center;
-   min-height: 100%;
-   height: 100%;
-   overflow: hidden;
+   flex-basis: 100%;
 
    @media (min-width: 50rem) {
-      background-size: 70%;
-      //  background-position: center bottom;
+      background-position: center bottom;
    }
 
-   &:where(.loading) &__btn {
-      --scale--ratio: 0;
+   &__loading {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-36);
+      color: var(--clr-blue-chalk);
+      align-items: baseline;
+      gap: rem(20);
    }
 
-   &:where(.loading) &__burger {
+   &:not(.loading) &__loading {
       display: none;
    }
-
-   
 
    &__btn {
       --scale--ratio: 1;
       --width: 7.5rem;
       display: flex;
-      position: absolute;
-      top: 50%;
-      left: 50%;
       width: var(--width);
       aspect-ratio: 1;
       border-radius: 100%;
@@ -44,48 +51,40 @@
       font-size: var(--fs-16);
       font-weight: var(--fw-extra-bold);
       padding: 0 3%;
-      transform: scale(var(--scale--ratio)) translate(-50%, -50%);
+      transform: scale(var(--scale--ratio));
       transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition-delay: 2500ms;
 
-
       @media (min-width: 50rem) {
-         top: 50%;
-         left: calc(50% - (var(--width)*1.5));
-         transform: scale(var(--scale--ratio));
-      }
-      @media (min-width: 70rem) { 
-         left: calc(50% - (var(--width)*2));
-
-      }
-
-      @media (min-width: 90rem) { 
-         left: calc(50% - (var(--width)*3));
+         position: absolute;
+         top: 70%;
+         left: 0;
       }
    }
 
-   
+      &:where(.loading) &__btn {
+      --scale--ratio: 0;
+   }
 
    &__burger {
-      position: relative;
+      position: absolute;
       top: 50%;
       transform: translateY(-50%);
       
-      // min-height: 5vh;
       margin-inline: auto;
       width: 50%;
-      // max-width: rem(500);
       aspect-ratio: 2 / 1;
+
       @media (min-width: 30rem) {
-         // top: 30%;
-         // top: 0;
-         // bottom: 0;
          width: 50%;
-         // max-width: none;
       }
 
       @media (min-height: 750px) and (max-width: 30rem) {
          width: 80%;
+      }
+
+      @media (min-width: 50rem) {
+         width: 70%;
       }
    }
 
@@ -113,8 +112,6 @@
       transform: scale(0.1);
       opacity: 0;
    }
-
-  
 
 }
 

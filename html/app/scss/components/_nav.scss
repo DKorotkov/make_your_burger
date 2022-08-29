@@ -9,7 +9,7 @@
    opacity: 0;
    height: calc(100vh - var(--sz-navigation));
    width: 100%;
-   margin-top: var(--sz-navigation);
+   margin-top: var(--sz-h-navigation);
    justify-content: space-between;
    padding: rem(24) 0 rem(48);
    pointer-events: none;
@@ -130,7 +130,7 @@
       text-decoration: none;
       color: var(--clr-black);
       @media (min-width: 50rem) { 
-         height: 100%;
+         height: 80%;
       }
    }
 
