@@ -65,10 +65,10 @@
    <!-- Ссылка на изображение -->
    <meta name="twitter:image" content="img/img1.jpeg" />
 
-   <link rel="stylesheet" href="css/header.min.css?_v=20220829151225" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20220829151225" />
+   <link rel="stylesheet" href="css/header.min.css?_v=20220830005452" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20220830005452" />
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220829151225" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220830005452" rel="stylesheet" />
 
    <!-- Здесь загружается иконочный шрифт, если иконки используються в верхней части страницы -->
    <!-- <link rel="preload" href="/fonts/fontello.woff" as="font" /> -->
@@ -101,8 +101,8 @@
 
       <nav class="header__nav nav" aria-label="Main navigation">
          <ul class="header__nav-list nav__box" role="list" id="navigation">
-            <li><a class="nav__item" href="#discover" aria-selected="true">Discover</a></li>
-            <li><a class="nav__item" href="#burger">Make your Burger</a></li>
+            <li class="tab-item"><a class="nav__item" href="#discover" aria-selected="true" data-close="true">Discover</a></li>
+            <li class="tab-item"><a class="nav__item" href="#burger" data-close="true">Make your Burger</a></li>
          </ul>
 
          <button class="nav__call btn-call">
@@ -140,9 +140,9 @@
 
       <main class="main" id="main-content">
          <div class="container main__container">
-            <h1 class="main__offer font-h1">Make Your Burger</h1>
+            <h1 id="discover" class="main__offer font-h1">Make Your Burger</h1>
 
-            <div class="discover loading">
+            <div class="discover loading tab-panel">
                <div class="discover__loading">
                   loading
                   <div class="dot-flashing"></div>
@@ -178,10 +178,12 @@
                   <picture><source srcset="img/discover/icon-th-up.webp" type="image/webp"><img class="discover__burger-emj discover__burger-emj-th-up" style="--animation-delay: 700ms" src="img/discover/icon-th-up.png" alt="icon-th-up" /></picture>
                </div>
 
-               <a class="discover__btn" href="#">make burger</a>
+               <div class="tab-item" data-number="1"><a class="discover__btn" href="#burger">make burger</a></div>
             </div>
 
-            <div class="burger">BURGER Lorem ipsum dolor sit amet consectetur adipisicing elit. Et repudiandae dignissimos dolorem accusantium vitae laudantium architecto, minima dolor consequuntur enim necessitatibus, earum dicta quia pariatur tenetur quis provident beatae atque?</div>
+            <div id="burger" class="burger tab-panel">
+               BURGER Lorem ipsum dolor sit amet consectetur adipisicing elit. Et repudiandae dignissimos dolorem accusantium vitae laudantium architecto, minima dolor consequuntur enim necessitatibus, earum dicta quia pariatur tenetur quis provident beatae atque?
+            </div>
          </div>
       </main>
       <footer class="footer">
@@ -236,14 +238,14 @@
    </div>
 </footer>
  <!-- js для загрухки шрифтов по времени, событию или из кэша -->
-<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220829151225"></script> -->
+<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220830005452"></script> -->
 <!-- ленивая загрузка изображений -->
-<!-- <script defer src="js/lazyload.min.js?_v=20220829151225"></script> -->
-<!-- <script src="js/ls.bgset.js?_v=20220829151225"></script> -->
+<!-- <script defer src="js/lazyload.min.js?_v=20220830005452"></script> -->
+<!-- <script src="js/ls.bgset.js?_v=20220830005452"></script> -->
 <!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
-<script src="js/focus-visible.min.js?_v=20220829151225"></script>
+<script src="js/focus-visible.min.js?_v=20220830005452"></script>
 
-<script src="js/script.min.js?_v=20220829151225"></script>
+<script src="js/script.min.js?_v=20220830005452"></script>
 
    </body>
 </html>
