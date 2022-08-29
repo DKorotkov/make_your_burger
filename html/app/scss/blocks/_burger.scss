@@ -1,5 +1,10 @@
 .burger {
+   
    @media (min-width: 50rem) {
-      display: none;
+         &[hidden] {
+         display: none;
+      }
    }
+
+   
 }

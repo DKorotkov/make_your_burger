@@ -6,9 +6,9 @@
       @@include('html/_header.html')
       <main class="main" id="main-content">
          <div class="container main__container">
-            <h1 class="main__offer font-h1">Make Your Burger</h1>
+            <h1 id="discover" class="main__offer font-h1">Make Your Burger</h1>
 
-            <div class="discover loading">
+            <div class="discover loading tab-panel">
                <div class="discover__loading">
                   loading
                   <div class="dot-flashing"></div>
@@ -44,10 +44,12 @@
                   <img class="discover__burger-emj discover__burger-emj-th-up" style="--animation-delay: 700ms" src="img/discover/icon-th-up.png" alt="icon-th-up" />
                </div>
 
-               <a class="discover__btn" href="#">make burger</a>
+               <div class="tab-item" data-number="1"><a class="discover__btn" href="#burger">make burger</a></div>
             </div>
 
-            <div class="burger">BURGER Lorem ipsum dolor sit amet consectetur adipisicing elit. Et repudiandae dignissimos dolorem accusantium vitae laudantium architecto, minima dolor consequuntur enim necessitatibus, earum dicta quia pariatur tenetur quis provident beatae atque?</div>
+            <div id="burger" class="burger tab-panel">
+               BURGER Lorem ipsum dolor sit amet consectetur adipisicing elit. Et repudiandae dignissimos dolorem accusantium vitae laudantium architecto, minima dolor consequuntur enim necessitatibus, earum dicta quia pariatur tenetur quis provident beatae atque?
+            </div>
          </div>
       </main>
       @@include('html/_footer.html') @@include('html/_scripts.html')
