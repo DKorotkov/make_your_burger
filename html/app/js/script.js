@@ -72,5 +72,22 @@
 // });
 
    // ------------------------------------------------------
+   const $discover = document.querySelector(".discover");
+   const $discoverBurger = document.querySelector(".discover__burger");
+
+    window.addEventListener("load", function(event) {
+      $discover.classList.remove("loading");
+      $discoverBurger.classList.add("descover__first");
+      const discoverBurgerAnimLength = $discoverBurger.getAnimations().length;
+      let animCounter = 0;
+      $discoverBurger.addEventListener("animationend", ()=>{
+         animCounter++;
+         if (animCounter === discoverBurgerAnimLength) {
+            $discoverBurger.classList.remove("descover__first");
+            
+            $discoverBurger.dataset.type = "explosion";
+         }
+      });
+   });
 
 })();

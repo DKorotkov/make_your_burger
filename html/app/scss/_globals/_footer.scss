@@ -3,8 +3,8 @@
 .footer {
    display: flex;
    flex-direction: column;
-   gap: rem(30);
-   padding: rem(20) 0;
+   gap: rem(16);
+   padding-bottom: rem(20);
 
    @media (min-width: 50rem) {
       flex-direction: row;
@@ -25,6 +25,11 @@
          height: 100%;
          background-color: var(--clr-muted);
       }
+   }
+
+   &__container {
+      padding-top: 0;
+      padding-bottom: 0;
    }
 
    &__inforamtion {

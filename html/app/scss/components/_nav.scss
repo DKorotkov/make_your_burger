@@ -14,6 +14,7 @@
    padding: rem(24) 0 rem(48);
    pointer-events: none;
    transition: all .3s ease;
+   z-index: 100;
 
    @media (min-width: 50rem) {
       position: static;
@@ -32,6 +33,10 @@
    }
 
    @media (min-width: 68rem) { 
+      gap: rem(35);
+   }
+
+   @media (min-width: 80rem) { 
       gap: rem(60);
    }
 
@@ -53,7 +58,7 @@
    &__call {
       display: none;
       @media (min-width: 50rem) { 
-         display: block;
+         display: flex;
       }
    }
 
@@ -78,6 +83,8 @@
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      align-self: center;
+      align-items: center;
       gap: rem(54);
       @media (min-width: 50rem) {
          flex-direction: row;
@@ -91,7 +98,27 @@
    }
 
    &__item {
+      display: block;
+      position: relative;
+      color: var(--clr-black);
+      text-decoration: none;
+      font-weight: var(--fw-semi-bold);
    }
+
+   &__item::before {
+      position: absolute;
+      bottom: calc(-1 * rem(12));
+      left: 0;
+      content: '';
+      width: 0%;
+      height: rem(2);
+      background-color: var(--clr-primary);
+      transition: width .3s ease;
+   }
+
+    &__item[aria-selected="true"]::before { 
+      width: 100%;
+    }
 
    &__person {
       display: flex;
@@ -99,6 +126,9 @@
       justify-content: flex-end;
       align-items: center;
       gap: rem(16);
+      border-radius: 50%;
+      text-decoration: none;
+      color: var(--clr-black);
       @media (min-width: 50rem) { 
          height: 100%;
       }

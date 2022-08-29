@@ -1,0 +1,65 @@
+
+// анимация телефонной трубки 
+@keyframes ring {
+  0% { transform: rotate(0); }
+  5% { transform: rotate(30deg); }
+  10% { transform: rotate(-28deg); }
+  15% { transform: rotate(34deg); }
+  20% { transform: rotate(-32deg); }
+  25% { transform: rotate(30deg); }
+  30% { transform: rotate(-28deg); }
+  35% { transform: rotate(26deg); }
+  40% { transform: rotate(-24deg); }
+  45% { transform: rotate(22deg); }
+  50% { transform: rotate(-20deg); }
+  55% { transform: rotate(18deg); }
+  60% { transform: rotate(-16deg); }
+  65% { transform: rotate(14deg); }
+  70% { transform: rotate(-12deg); }
+  75% { transform: rotate(10deg); }
+  80% { transform: rotate(-8deg); }
+  85% { transform: rotate(6deg); }
+  90% { transform: rotate(-4deg); }
+  95% { transform: rotate(2deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+// анимация падения бургера на первой странице
+@keyframes bounce {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  50%, 80%, 100% {top: 50%;} 
+   60% {top: 47%;} 
+   70% {top: 49%;}
+}
+
+ 
+@keyframes shake {
+  0% { transform: rotateZ(0) translateY(-50%) translateX(0);}
+  9% { transform: rotateZ(3deg) translateY(-50%) translateX(20px);}
+  18% { transform: rotateZ(-2deg) translateY(-50%) translateX(-18px);}
+  27% { transform: rotateZ(1deg) translateY(-50%) translateX(16px);}
+  36% { transform: rotateZ(-3deg) translateY(-50%) translateX(-14px);}
+  45% { transform: rotateZ(2deg) translateY(-50%) translateX(12px);}
+  54% { transform: rotateZ(-1deg) translateY(-50%) translateX(-10px);}
+  63% { transform: rotateZ(3deg) translateY(-50%) translateX(8px);}
+  72% { transform: rotateZ(-2deg) translateY(-50%) translateX(-6px);}
+  81% { transform: rotateZ(1deg) translateY(-50%) translateX(4px);}
+  90% { transform: rotateZ(-1deg) translateY(-50%) translateX(-2px);}
+  100% { transform: rotateZ(0deg) translateY(-50%) translateX(0);}
+}
+
+@keyframes emj-show {
+  0% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

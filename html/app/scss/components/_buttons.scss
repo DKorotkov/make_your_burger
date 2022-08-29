@@ -29,6 +29,10 @@
    font-weight: var(--fw-semi-bold);
    cursor: pointer;
 
+   &:where(:hover, :focus-visible) &__icon {
+      animation: ring 2s .7s ease-in-out infinite;
+   }
+
    &__icon {
       fill: var(--clr-danger);
       width: rem(16);

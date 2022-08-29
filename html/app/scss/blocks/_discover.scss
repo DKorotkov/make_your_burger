@@ -1,0 +1,434 @@
+@use "__config" as *;
+
+.discover {
+   background-image: url("../files/svg_icons/bg_burger.svg");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center center;
+   min-height: 100%;
+   height: 100%;
+   overflow: hidden;
+
+   @media (min-width: 50rem) {
+      background-size: 70%;
+      //  background-position: center bottom;
+   }
+
+   &:where(.loading) &__btn {
+      --scale--ratio: 0;
+   }
+
+   &:where(.loading) &__burger {
+      display: none;
+   }
+
+   
+
+   &__btn {
+      --scale--ratio: 1;
+      --width: 7.5rem;
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--width);
+      aspect-ratio: 1;
+      border-radius: 100%;
+      background-color: var(--clr-primary);
+      color: var(--clr-white);
+      text-transform: uppercase;
+      text-decoration: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: var(--fs-16);
+      font-weight: var(--fw-extra-bold);
+      padding: 0 3%;
+      transform: scale(var(--scale--ratio)) translate(-50%, -50%);
+      transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition-delay: 2500ms;
+
+
+      @media (min-width: 50rem) {
+         top: 50%;
+         left: calc(50% - (var(--width)*1.5));
+         transform: scale(var(--scale--ratio));
+      }
+      @media (min-width: 70rem) { 
+         left: calc(50% - (var(--width)*2));
+
+      }
+
+      @media (min-width: 90rem) { 
+         left: calc(50% - (var(--width)*3));
+      }
+   }
+
+   
+
+   &__burger {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      
+      // min-height: 5vh;
+      margin-inline: auto;
+      width: 50%;
+      // max-width: rem(500);
+      aspect-ratio: 2 / 1;
+      @media (min-width: 30rem) {
+         // top: 30%;
+         // top: 0;
+         // bottom: 0;
+         width: 50%;
+         // max-width: none;
+      }
+
+      @media (min-height: 750px) and (max-width: 30rem) {
+         width: 80%;
+      }
+   }
+
+   &__burger.descover__first {
+      animation: bounce 1s ease, shake .5s ease 1s;
+   }
+
+   &__burger-piece {
+      position: absolute;
+      bottom: rem(30);
+   }
+
+   &__burger-cheese,
+   &__burger-salad-bottom,
+   &__burger-mayo-bottom,
+   &__burger-mayo-top,
+   &__burger-cutlet,
+   &__burger-onion-whole,
+   &__burger-salad-top {
+      transform: scale(0.7);
+   }
+
+   &__burger-emj {
+      position: absolute;
+      transform: scale(0.1);
+      opacity: 0;
+   }
+
+  
+
+}
+
+//whole
+.discover {
+
+  &__burger[data-type="whole"] &__burger-piece {
+      top: 80%;
+   }
+
+  &__burger[data-type="whole"] &__burger-bun-bottom,
+  &__burger[data-type="whole"] &__burger-bun-top {
+      
+      right: -5%;
+      // right: calc(-1 * rem(15));
+   }
+
+  &__burger[data-type="whole"] &__burger-mayo-bottom {
+      
+      top: 78%;
+   }
+
+  &__burger[data-type="whole"] &__burger-salad-bottom {
+      
+      top: 65.8%;
+   }
+
+  &__burger[data-type="whole"] &__burger-cheese {
+      
+      top: 71.5%;
+   }
+   
+   &__burger[data-type="whole"] &__burger-onion-1,
+   &__burger[data-type="whole"] &__burger-onion-2,
+   &__burger[data-type="whole"] &__burger-onion-3,
+   &__burger[data-type="whole"] &__burger-onion-4,
+   &__burger[data-type="whole"] &__burger-onion-5,
+   &__burger[data-type="whole"] &__burger-onion-6 {
+      top: 66%;
+      left: 16%;
+      width: 30%;
+   }
+
+   &__burger[data-type="whole"] &__burger-onion-1 {
+       
+       left: 16%;
+   }
+
+   &__burger[data-type="whole"] &__burger-onion-2 {
+      
+      left: 33%;
+   }
+
+   &__burger[data-type="whole"] &__burger-onion-3 {
+       
+       right: 16.5%;
+   }
+
+  &__burger[data-type="whole"] &__burger-cutlet {
+      
+      top: 31%;
+   }
+
+   &__burger[data-type="whole"] &__burger-tomato-1,
+   &__burger[data-type="whole"] &__burger-tomato-2,
+   &__burger[data-type="whole"] &__burger-tomato-3,
+   &__burger[data-type="whole"] &__burger-tomato-4 {
+      top: 34%;
+      width: 40%;
+   }
+
+  &__burger[data-type="whole"] &__burger-tomato-1,
+  &__burger[data-type="whole"] &__burger-tomato-3 {
+      
+      left: 14%;
+   }
+
+  &__burger[data-type="whole"] &__burger-tomato-2, 
+  &__burger[data-type="whole"] &__burger-tomato-4 {
+      
+      right: 14%;
+   }
+
+  &__burger[data-type="whole"] &__burger-cucumber-1,
+  &__burger[data-type="whole"] &__burger-cucumber-2,
+  &__burger[data-type="whole"] &__burger-cucumber-3,
+  &__burger[data-type="whole"] &__burger-cucumber-4 {
+      top: 31%;
+      width: 33%;
+   }
+
+   &__burger[data-type="whole"] &__burger-cucumber-1 {
+      
+      left: 14%;
+   }
+
+   &__burger[data-type="whole"] &__burger-cucumber-2,
+   &__burger[data-type="whole"] &__burger-cucumber-3 {
+      
+      left: 34%;
+   }
+
+   &__burger[data-type="whole"] &__burger-cucumber-4 {
+      
+      right: 14%;
+   }
+
+  &__burger[data-type="whole"] &__burger-salad-top {
+      
+      top: 11%;
+   }
+
+  &__burger[data-type="whole"] &__burger-mayo-top {
+      
+      top: 11%;
+   }
+
+  &__burger[data-type="whole"] &__burger-bun-top {
+      top: -54%;
+   }
+
+  &__burger &__burger-emj-smile {
+      top: -115%;
+      left: -35%;
+      transform: scale(.1) rotate(-35deg);
+   }
+
+  &__burger &__burger-emj-flash {
+      top: -105%;
+      left: 43%;
+      transform: scale(.2);
+   }
+
+  &__burger &__burger-emj-party {
+      top: -60%;
+      left: 63%;
+      transform: scale(.1) rotate(20deg);
+   }
+
+  &__burger &__burger-emj-th-up {
+    top: 19%;
+      left: -37%;
+      transform: scale(.2) rotate(10deg);
+   }
+}
+
+// explosion
+.discover {
+
+   &__burger[data-type="explosion"] {
+      transform: translateY(0) translateX(-5%);
+   }
+
+  &__burger[data-type="explosion"] &__burger-piece {
+      top: 80%;
+      transition: all .3s ease-out;
+   }
+
+  &__burger[data-type="explosion"] &__burger-bun-bottom {
+      right: -20%;
+      transform: rotate(-15deg);
+  }
+
+
+  &__burger[data-type="explosion"] &__burger-mayo-bottom {
+      top: 74%;
+      right: -13%;
+      transform: scale(0.7) rotate(-15deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-salad-bottom {
+      top: 48.8%;
+      right: -8%;
+      transform: scale(1);
+   }
+
+  &__burger[data-type="explosion"] &__burger-cheese {
+      top: 49.5%;
+      right: -13%;
+      transform: scale(0.7) rotate(-15deg);
+   }
+   
+   &__burger[data-type="explosion"] &__burger-onion-1 {
+      top: -6%;
+      left: -16%;
+      transform: scale(0.3) rotate(15deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-onion-2 {
+      top: -16%;
+      left: 19%;
+      transform: scale(0.4) rotate(-15deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-onion-3 {
+       top: -23%;
+       right: -14.5%;
+       transform: scale(0.4) rotate(22deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-onion-4 {
+      top: -48%;
+      right: 12.5%;
+      transform: scale(0.2) rotate(-22deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-onion-5 {
+      top: -51%;
+      left: 34.5%;
+      transform: scale(0.1) rotate(22deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-onion-6 {
+      top: -65%;
+      left: 58%;
+      transform: scale(0.3) rotate(22deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-cutlet {
+      top: -25%;
+      left: 10%;
+      z-index: -1;
+      transform: scale(0.7) rotate(-10deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-tomato-1 {
+      top: -45%;
+      left: -50%;
+      transform: scale(0.125) rotate(45deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-tomato-2 {
+      top: -59%;
+      left: 9%;
+      transform: scale(0.25) rotate(10deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-tomato-3 {
+      top: -78%;
+      left: -13%;
+      transform: scale(0.25) rotate(-15deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-tomato-4 {
+      top: -73%;
+      left: 25%;
+      transform: scale(0.25) rotate(15deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-cucumber-1 {
+      top: -93%;
+      left: -15%;
+      transform: scale(0.25) rotate(15deg);
+  }
+
+  &__burger[data-type="explosion"] &__burger-cucumber-2{
+      top: -82%;
+      left: 14%;
+      transform: scale(0.25) rotate(-10deg);
+  }
+
+  &__burger[data-type="explosion"] &__burger-cucumber-3{
+      top: -79%;
+      left: 32%;
+      transform: scale(0.25) rotate(35deg);
+  }
+
+  &__burger[data-type="explosion"] &__burger-cucumber-4 {
+      top: -98%;
+      left: 9%;
+      transform: scale(0.25) rotate(22deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-salad-top {
+      top: -86%;
+      left: 9%;
+      transform: rotate(22deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-mayo-top {
+      top: -75%;
+      left: 2%;
+      transform: scale(0.7) rotate(22deg);
+   }
+
+  &__burger[data-type="explosion"] &__burger-bun-top {
+      top: -131%;
+      left: 15%;
+      transform: rotate(25deg);
+   }
+
+   &__burger[data-type="explosion"] &__burger-emj {
+      --animation-delay: 300ms;
+      animation: emj-show .5s ease var(--animation-delay) forwards;
+   }
+
+//    &__burger &__burger-emj-smile {
+//    }
+
+//   &__burger &__burger-emj-flash {
+//       top: -105%;
+//       left: 43%;
+//       transform: scale(.2);
+//    }
+
+//   &__burger &__burger-emj-party {
+//       top: -60%;
+//       left: 63%;
+//       transform: scale(.1) rotate(20deg);
+//    }
+
+//   &__burger &__burger-emj-th-up {
+//     top: 19%;
+//       left: -37%;
+//       transform: scale(.2) rotate(10deg);
+//    }
+}

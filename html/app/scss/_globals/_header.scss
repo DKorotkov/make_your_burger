@@ -16,6 +16,10 @@
       gap: rem(80);
    }
 
+   &__container {
+      padding-top: rem(20);
+   }
+
    &__icon {
       display: flex;
       background-color: var(--clr-titan-white);
