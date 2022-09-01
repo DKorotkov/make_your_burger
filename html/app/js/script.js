@@ -71,7 +71,7 @@
 //    collapseOnFocusOut: false,
 // });
 
-   // ------------Анимация бургера при загрузке--------------------------------
+   // ------------Анимация бургера и запуск функций при загрузке--------------------------------
    const $discover = document.querySelector(".discover");
    const $discoverBurger = document.querySelector(".discover__burger");
 
@@ -88,6 +88,9 @@
             $discoverBurger.dataset.type = "explosion";
          }
       });
+
+      // загружаем ингридиенты
+      loadInrgedients();
    });
    // ------------------------------------------------------------------
 
@@ -178,5 +181,75 @@
       );
    }
    // ------------------------------------------------------------------
+   // ------------Загрузка ингридиентов ----------------------------------------
+   const $price = document.querySelector(".burger__checkout-summ");
+   const $summData = [...document.querySelectorAll(".burger__summary-data-name")];
+
+   const addInrgedient = (param) => {
+      $price.dataset.price = (parseFloat($price.dataset.price) + param.price).toFixed(2);
+      $summData.forEach($data => {
+         if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) + param.min).toFixed(0);
+         if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) + param.oz).toFixed(1);
+         if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) + param.kcal).toFixed(0);
+      });
+      param.amount.dataset.value++;
+   };
+
+   const removeInrgedient = (param) => {
+      if (parseInt(param.amount.dataset.value) === 0) return;
+      $price.dataset.price = (parseFloat($price.dataset.price) - param.price).toFixed(2);
+      $summData.forEach($data => {
+         if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) - param.min).toFixed(0);
+         if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) - param.oz).toFixed(1);
+         if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) - param.kcal).toFixed(0);
+      });
+      param.amount.dataset.value--;
+   };
+
+   function loadInrgedients() {
+      const template = document.querySelector('#ingredient');
+      const ingredients = document.querySelector('.ingredients');
+      let data;
+      readFile("../files/data/data.json", function(text){
+         data = JSON.parse(text);
+         data.forEach((el, i) => {
+            const clone = template.content.cloneNode(true);
+            const cloneImg = document.createElement("img");
+            const cloneName = clone.querySelector(".ingredient__name");
+            const cloneAddBtn = clone.querySelector(".ingredient__plus");
+            const cloneRemoveBtn = clone.querySelector(".ingredient__minus");
+            const amount = clone.querySelector(".ingredient__amount");
+            
+            cloneImg.classList.add("ingredient__img");
+            cloneImg.src = el.img;
+            cloneName.innerHTML = el.name;
+            
+            ingredients.appendChild(clone);
+            const appendClone = ingredients.querySelector(`.ingredient:nth-child(${i+1})`);
+            appendClone.insertBefore(cloneImg, cloneName);
+
+            el.amount = amount;
+
+            cloneAddBtn.addEventListener("click", () => addInrgedient(el));
+            cloneRemoveBtn.addEventListener("click", () => removeInrgedient(el));
+         });
+      });
+   }
+
+   function readFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+      rawFile.send(null);
+   }
+
+   
+   // ------------------------------------------------------------------
+
 
 })();

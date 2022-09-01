@@ -15,6 +15,10 @@
       gap: rem(36);
    }
 
+   &[hidden] ~ .ingredients {
+      display: none;
+   }
+
    &__summary {
       display: flex;
       flex-direction: column;
@@ -41,7 +45,7 @@
    }
 
    &__checkout-summ::after {
-      content: attr(data-summ);
+      content: attr(data-price);
    }
    
    &__checkout-summ::before {
@@ -56,6 +60,16 @@
       padding: rem(16) rem(32);
       border: none;
       cursor: pointer;
+      transition: background-color .3s ease;
+   }
+
+   &__checkout-btn:not([disabled]):where(:hover, :focus-visible) {
+      background-color: var(--clr-indigo-600);
+   }
+
+   &__checkout-btn:disabled {
+      color: var(--clr-muted);
+      background-color: var(--clr-titan-white);
    }
 
    &__checkout-gift {

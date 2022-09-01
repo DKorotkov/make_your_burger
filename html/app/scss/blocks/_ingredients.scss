@@ -1,0 +1,102 @@
+@use "__config" as *;
+
+.ingredients {
+   display: flex;
+   flex-wrap: wrap;
+   grid-column: span 2;
+   gap: rem(32);
+   justify-content: center;
+
+   &:empty {
+      display: none;
+   }
+}
+
+.ingredient {
+   display: grid;
+   flex-basis: rem(140);
+   border-radius: var(--bd-radius);
+   border: rem(1) solid var(--clr-black-squeeze);
+   padding: rem(24) rem(18);
+   justify-items: center;
+   gap: rem(12);
+
+		&__img {
+         object-fit: contain;
+         aspect-ratio: 2.575/1;
+         padding-bottom: rem(8);
+		}
+
+		&__name {
+         font-size: var(--fs-14);
+         font-weight: var(--fw-semi-bold);
+         
+		}
+
+		&__amount {
+         display: flex;
+         font-size: var(--fs-20);
+         font-weight: var(--fw-semi-bold);
+         // gap: rem(18);
+         justify-content: space-between;
+         width: rem(105);
+		}
+
+      &__amount[data-value="0"] > &__minus {
+         color: var(--clr-muted);
+         cursor: default;
+         pointer-events: none;
+      }
+
+      &__minus,
+      &__plus {
+         display: flex;
+         position: relative;
+         padding: 0;
+         margin: 0;
+         border: none;
+         width: rem(28);
+         background-color: var(--clr-titan-white);
+         color: var(--clr-primary);
+         aspect-ratio: 1;
+         border-radius: 50%;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+         transition: all .3s ease;
+         overflow: hidden;
+      }
+
+      &__minus:not([disabled]):where(:hover, :focus-visible),
+      &__plus:not([disabled]):where(:hover, :focus-visible) { 
+         background-color: var(--clr-primary);
+         color: var(--clr-titan-white);
+      }
+
+      &__minus:disabled,
+      &__plus:disabled { 
+         color: var(--clr-muted);
+      }
+
+      &__minus::before {
+         position: relative;
+         top: calc(-1 * rem(2));
+         content: '-';
+      }
+
+      &__plus::before {
+         position: relative;
+         top: calc(-1 * rem(1));
+         content: '+';
+      }
+
+      &__plus {
+         order: 1;
+      }
+
+      &__amount::after {
+         content: attr(data-value);
+      }
+
+     
+   }
