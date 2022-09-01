@@ -5,7 +5,7 @@
    <body class="body">
       @@include('html/_header.html')
       <main class="main" id="main-content">
-         <div class="container main__container">
+         <il class="container main__container">
             <h1 id="discover" class="main__offer font-h1">Make Your Burger</h1>
 
             <div class="discover loading tab-panel">
@@ -48,8 +48,44 @@
             </div>
 
             <div id="burger" class="burger tab-panel">
-               BURGER Lorem ipsum dolor sit amet consectetur adipisicing elit. Et repudiandae dignissimos dolorem accusantium vitae laudantium architecto, minima dolor consequuntur enim necessitatibus, earum dicta quia pariatur tenetur quis provident beatae atque?
+               <div class="burger__scene">1</div>
+               <div class="burger__summary">
+                  <h3 class="burger__header font-h3">Summary</h3>
+                  <div class="burger__checkout">
+                     <span class="burger__checkout-summ" data-summ="0.00"></span>
+                     <button class="burger__checkout-btn">Checkout</button>
+                     <span class="burger__checkout-gift">Build a <span class="burger__checkout-gift-danger">$10</span> Burger and Get a Gift</span>
+                  </div>
+
+                  <ul class="burger__summary-data">
+                     <li class="burger__summary-data-item">
+                        <svg class="burger__summary-data-icon burger__summary-data-icon--1" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#clock"></use></svg>
+                        <span class="burger__summary-data-name" data-name="min" data-value="0">min</span>
+                     </li>
+
+                     <li class="burger__summary-data-item">
+                        <svg class="burger__summary-data-icon burger__summary-data-icon--2" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#weight"></use></svg>
+                        <span class="burger__summary-data-name" data-name="oz" data-value="0">oz</span>
+                     </li>
+
+                     <li class="burger__summary-data-item">
+                        <svg class="burger__summary-data-icon burger__summary-data-icon--3" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#kcal"></use></svg>
+                        <span class="burger__summary-data-name" data-name="kcal" data-value="0">kcal</span>
+                     </li>
+                  </ul>
+
+                  <button class="burger__additionally">
+                     <span class="burger__additionally-name">+ Tomato Ketchup</span>
+                     <span class="burger__additionally-params">1.2 oz</span>
+                  </button>
+               </div>
             </div>
+
+            <ul class="ingredients">
+               <li>1</li>
+               <li>1</li>
+               <li>1</li>
+            </il>
          </div>
       </main>
       @@include('html/_footer.html') @@include('html/_scripts.html')

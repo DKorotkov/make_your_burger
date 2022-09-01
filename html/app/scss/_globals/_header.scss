@@ -9,6 +9,11 @@
    padding-top: var(--sz-pd-navigation);
    z-index: 100;
 
+   @media (min-width: 50rem) {
+      position: static;
+      padding-bottom: var(--sz-pd-navigation);
+   }
+
 
    &__container {
       display: flex;
