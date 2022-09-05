@@ -13,16 +13,16 @@
       gap: rem(20);
       @media (min-width: 50rem) {
          display: grid;
-         grid-template-columns: 1fr 1fr;
+         grid-template-columns: auto 1fr;
          height: 100%;
          align-items: center;
-         column-gap: 20%;
+         column-gap: rem(36);
          padding-bottom: rem(30);
          row-gap: rem(60);
       }
    }
 
    &__offer {
-      flex-basis: 20%;
+      width: min-content;
    }
 }

@@ -181,38 +181,47 @@
       );
    }
    // ------------------------------------------------------------------
-   // ------------Загрузка ингридиентов ----------------------------------------
+   // ------------Загрузка ингредиентов ----------------------------------------
    const $price = document.querySelector(".burger__checkout-summ");
    const $summData = [...document.querySelectorAll(".burger__summary-data-name")];
+   const buns = [];
 
    const addInrgedient = (param) => {
       $price.dataset.price = (parseFloat($price.dataset.price) + param.price).toFixed(2);
       $summData.forEach($data => {
-         if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) + param.min).toFixed(0);
+         if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) + param.min).toFixed(2);
          if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) + param.oz).toFixed(1);
          if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) + param.kcal).toFixed(0);
       });
-      param.amount.dataset.value++;
+      if (param.amount) param.amount.dataset.value++;
+      addBurgerElement(param);
    };
 
    const removeInrgedient = (param) => {
-      if (parseInt(param.amount.dataset.value) === 0) return;
+      if (param.amount && parseInt(param.amount.dataset.value) === 0) return;
       $price.dataset.price = (parseFloat($price.dataset.price) - param.price).toFixed(2);
       $summData.forEach($data => {
          if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) - param.min).toFixed(0);
          if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) - param.oz).toFixed(1);
          if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) - param.kcal).toFixed(0);
       });
-      param.amount.dataset.value--;
+      if (param.amount) param.amount.dataset.value--;
+      removeBurgerElement(param);
    };
 
    function loadInrgedients() {
       const template = document.querySelector('#ingredient');
       const ingredients = document.querySelector('.ingredients');
       let data;
+      
       readFile("../files/data/data.json", function(text){
          data = JSON.parse(text);
          data.forEach((el, i) => {
+            if (el.auto) {
+               buns.push(el);
+               i--;
+               return;
+            }
             const clone = template.content.cloneNode(true);
             const cloneImg = document.createElement("img");
             const cloneName = clone.querySelector(".ingredient__name");
@@ -225,15 +234,19 @@
             cloneName.innerHTML = el.name;
             
             ingredients.appendChild(clone);
-            const appendClone = ingredients.querySelector(`.ingredient:nth-child(${i+1})`);
+            const appendClone = ingredients.querySelector(`.ingredient:last-of-type`);
             appendClone.insertBefore(cloneImg, cloneName);
 
             el.amount = amount;
 
             cloneAddBtn.addEventListener("click", () => addInrgedient(el));
             cloneRemoveBtn.addEventListener("click", () => removeInrgedient(el));
+
          });
+         addInrgedient(buns[1]);
       });
+      
+      
    }
 
    function readFile(file, callback) {
@@ -249,6 +262,86 @@
    }
 
    
+   // ------------------------------------------------------------------
+   // ---------Добавление ингредиентов в бургер-------------------------
+   const TIME_TO_ADD_TOP_BUN = 3000;
+
+   
+   const $scene = document.querySelector(".burger__scene");
+   let totalBottom = 0; // размер первого блока в процентах для bottom
+   const startBottom = 80; // начало анимации в процентах для bottom 
+   let removeStatus = false; // для проверки в процессе ли удаление
+   let removeEls = []; // очередь элементов на удаление
+
+   let addTopBunTimout;
+   function addTopBun() {
+      addTopBunTimout = setTimeout(() => {
+         addInrgedient(buns[0]);
+         clearTimeout(addTopBunTimout);
+         addTopBunTimout = null;
+      }, TIME_TO_ADD_TOP_BUN);
+      
+   }
+
+   function addBurgerElement(param) {
+      const $burgerElList = [...$scene.querySelectorAll(".burger__scene-element")];
+      if(addTopBunTimout){
+         clearTimeout(addTopBunTimout);
+         addTopBunTimout = null;
+      }
+      if ($burgerElList.length > 0) {
+         addTopBun();
+      }
+      if ($scene.querySelector(`[data-name="${buns[0].name}"]`) !== null) removeInrgedient(buns[0]);
+
+      const $burgerEl = document.createElement("img");
+      const startThisBottom = startBottom + param.width;
+      
+      $burgerEl.classList.add("burger__scene-element");
+      $burgerEl.src = param.img_group ? param.img_group : param.img;
+      $burgerEl.setAttribute("alt", param.name);
+      $burgerEl.setAttribute("data-name", param.name);
+      $burgerEl.style.bottom = `${startThisBottom}%`;
+      $burgerEl.style.opacity = 0;
+      
+      $scene.appendChild($burgerEl);
+      setTimeout(() => {
+         $burgerEl.style.bottom = `${totalBottom}%`;
+         $burgerEl.style.opacity = 1;
+         totalBottom += param.width;
+      }, 1);
+   }
+
+   function removeBurgerElement(param) {
+      if (removeStatus) {
+         removeEls.push(param);
+         return;
+      }
+      removeStatus = true;
+      const $burgerEl = $scene.querySelectorAll(`[data-name="${param.name}"]`);
+      if ($burgerEl.length > 0) {
+         const $burgerElList = [...$scene.querySelectorAll(".burger__scene-element")];
+         const indexOfRemoveEl = $burgerElList.indexOf($burgerEl[$burgerEl.length - 1]);
+
+         $burgerEl[$burgerEl.length - 1].classList.add("burger__scene-element--delete");
+         $burgerEl[$burgerEl.length - 1].addEventListener("animationend", ()=>{
+            $scene.removeChild($burgerEl[$burgerEl.length - 1]);
+            removeStatus = false;
+            if (removeEls.length > 0) {
+               removeBurgerElement(removeEls[0]);
+               removeEls.shift();
+            }
+         });
+
+         totalBottom -= param.width;
+
+         for (let i = indexOfRemoveEl + 1; i < $burgerElList.length; i++) {
+            const $element = $burgerElList[i];
+            const elWidth = parseInt($element.style.bottom, 10) - param.width;
+            $element.style.bottom = `${elWidth}%`;
+         }
+      }
+   }
    // ------------------------------------------------------------------
 
 

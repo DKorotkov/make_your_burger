@@ -4,8 +4,19 @@
    display: flex;
    flex-wrap: wrap;
    grid-column: span 2;
-   gap: rem(32);
    justify-content: center;
+
+   @media (min-width: 50rem) {
+       gap: rem(8);
+   }
+
+   @media (min-width: 100rem) {
+       gap: rem(16);
+   }
+
+   @media (min-width: 150rem) {
+       gap: rem(32);
+   }
 
    &:empty {
       display: none;

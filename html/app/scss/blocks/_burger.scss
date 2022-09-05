@@ -147,5 +147,28 @@
 
    }
 
+   &__scene {
+      position: relative;
+      background-image: url("../files/svg_icons/bg_burger.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      z-index: 150;
+   }
+
+   &__scene-element {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 60%;
+      transform: translateX(-50%);
+      transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   }
+
+   &__scene-element--delete {
+      animation: remove-burger-el .3s ease-out;
+   }
+
    
 }

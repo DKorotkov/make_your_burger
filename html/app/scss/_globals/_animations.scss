@@ -63,3 +63,16 @@
   }
 }
 
+@keyframes remove-burger-el {
+  30% {
+    left: 45%;
+  }
+  40% {
+    //  left: 50%;
+     opacity: 1;
+  }
+  100% {
+    left: 80%;
+    opacity: 0;
+  }
+}
