@@ -35,6 +35,7 @@
       color: var(--clr-blue-chalk);
       align-items: baseline;
       gap: rem(20);
+      z-index: -1;
    }
 
    &:not(.loading) &__loading {

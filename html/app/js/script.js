@@ -191,10 +191,17 @@
       $summData.forEach($data => {
          if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) + param.min).toFixed(2);
          if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) + param.oz).toFixed(1);
-         if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) + param.kcal).toFixed(0);
+         if ($data.dataset.name === 'kcal') {
+            const curKcal = parseFloat($data.dataset.value) + param.kcal;
+            $data.dataset.value = curKcal.toFixed(0);
+            // проверка для того, чтобы показывать сообщение 
+            toogleShowQuestion(curKcal);
+         }
       });
       if (param.amount) param.amount.dataset.value++;
       addBurgerElement(param);
+
+      
    };
 
    const removeInrgedient = (param) => {
@@ -203,7 +210,12 @@
       $summData.forEach($data => {
          if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) - param.min).toFixed(0);
          if ($data.dataset.name === 'oz') $data.dataset.value = (parseFloat($data.dataset.value) - param.oz).toFixed(1);
-         if ($data.dataset.name === 'kcal') $data.dataset.value = (parseFloat($data.dataset.value) - param.kcal).toFixed(0);
+         if ($data.dataset.name === 'kcal') {
+            const curKcal = parseFloat($data.dataset.value) - param.kcal;
+            $data.dataset.value = curKcal.toFixed(0);
+            // проверка для того, чтобы показывать сообщение 
+            toogleShowQuestion(curKcal);
+         }
       });
       if (param.amount) param.amount.dataset.value--;
       removeBurgerElement(param);
@@ -343,6 +355,36 @@
       }
    }
    // ------------------------------------------------------------------
+
+   // ---------Сообщение "You are sure?"--------------------------------
+   const $burgerQuestion = document.querySelector(".burger__question");
+   const toogleShowQuestion = (curKcal) => {
+      const maxKcal = 3000;
+      if (curKcal > maxKcal) $burgerQuestion.classList.add("burger__question--show");
+      else $burgerQuestion.classList.remove("burger__question--show");
+   }
+   // ------------------------------------------------------------------
+
+   // -----------Дополнительный кетчуп----------------------------------
+   const $ketchup = document.querySelector(".burger__ketchup");
+   const $btnAdditionally = document.querySelector(".burger__additionally");
+   const $btnAddName = $btnAdditionally.querySelector(".burger__additionally-name");
+   const ozKetchupValue = $btnAdditionally.querySelector(".burger__additionally-params").dataset.value;
+   const $ozItem = document.querySelector('.burger__summary-data-name[data-name="oz"]');
+   $btnAdditionally.addEventListener("click", () => {
+      $ketchup.classList.toggle("burger__ketchup--show");
+      if ($btnAddName.dataset.content === "+") {
+         $btnAddName.dataset.content = "-";
+         $ozItem.dataset.value = (parseFloat($ozItem.dataset.value) + parseFloat(ozKetchupValue)).toFixed(1);
+      }
+      else {
+         $btnAddName.dataset.content = "+";
+         $ozItem.dataset.value = (parseFloat($ozItem.dataset.value) - parseFloat(ozKetchupValue)).toFixed(1)
+      }
+   })
+   // ------------------------------------------------------------------
+
+
 
 
 })();

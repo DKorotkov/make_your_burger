@@ -65,10 +65,10 @@
    <!-- Ссылка на изображение -->
    <meta name="twitter:image" content="img/img1.jpeg" />
 
-   <link rel="stylesheet" href="css/header.min.css?_v=20220905140253" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20220905140253" />
+   <link rel="stylesheet" href="css/header.min.css?_v=20220905160902" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20220905160902" />
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220905140253" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220905160902" rel="stylesheet" />
 
    <!-- Здесь загружается иконочный шрифт, если иконки используються в верхней части страницы -->
    <!-- <link rel="preload" href="/fonts/fontello.woff" as="font" /> -->
@@ -182,6 +182,13 @@
             </div>
 
             <div id="burger" class="burger tab-panel">
+               <div class="burger__question">
+                  <picture><source srcset="img/icon-exp.webp" type="image/webp"><img class="burger__question-img" src="img/icon-exp.png" alt=""></picture>
+                  You are sure?
+               </div>
+               <div class="burger__ketchup" >
+                  <picture><source srcset="img/ketchup.webp" type="image/webp"><img src="img/ketchup.png" alt="ketchup"></picture>
+               </div>
                <div class="burger__scene">
                </div>
                <div class="burger__summary">
@@ -210,8 +217,8 @@
                   </ul>
 
                   <button class="burger__additionally">
-                     <span class="burger__additionally-name">+ Tomato Ketchup</span>
-                     <span class="burger__additionally-params">1.2 oz</span>
+                     <span class="burger__additionally-name" data-content="+">Tomato Ketchup</span>
+                     <span class="burger__additionally-params" data-value="1.2">oz</span>
                   </button>
                </div>
             </div>
@@ -272,14 +279,14 @@
    </div>
 </footer>
  <!-- js для загрухки шрифтов по времени, событию или из кэша -->
-<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220905140253"></script> -->
+<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220905160902"></script> -->
 <!-- ленивая загрузка изображений -->
-<!-- <script defer src="js/lazyload.min.js?_v=20220905140253"></script> -->
-<!-- <script src="js/ls.bgset.js?_v=20220905140253"></script> -->
+<!-- <script defer src="js/lazyload.min.js?_v=20220905160902"></script> -->
+<!-- <script src="js/ls.bgset.js?_v=20220905160902"></script> -->
 <!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
-<script src="js/focus-visible.min.js?_v=20220905140253"></script>
+<script src="js/focus-visible.min.js?_v=20220905160902"></script>
 
-<script src="js/script.min.js?_v=20220905140253"></script>
+<script src="js/script.min.js?_v=20220905160902"></script>
 
        <template id="ingredient">
          <li class="ingredient">
