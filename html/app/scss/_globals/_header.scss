@@ -7,11 +7,12 @@
    left: 0;
    background-color: var(--clr-white);
    padding-top: var(--sz-pd-navigation);
-   z-index: 100;
+   padding-bottom: var(--sz-pd-navigation);
+   z-index: 200;
 
    @media (min-width: 50rem) {
       position: static;
-      padding-bottom: var(--sz-pd-navigation);
+      z-index: 100;
    }
 
 

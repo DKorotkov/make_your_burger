@@ -2,6 +2,7 @@
 
 (function () {
    ("use strict");
+   const matchMedia = '(max-width: 50rem)';
 
    // -------------Загрузка шрифтов через скрипт------------
    // include('modules/_fonts.js')
@@ -44,7 +45,7 @@
       collapseOnFocusOut: false, // Требуется ли закрывать при потери фокуса
       activeClass: "--active",
       overlay: false,
-      matchMedia: '(max-width: 50rem)',
+      matchMedia: matchMedia,
 
       // onClose() {
       //    console.log("modal closing");
@@ -95,7 +96,7 @@
    // ------------------------------------------------------------------
 
    // ------------------Работа с табами---------------------------------
-   if (window.matchMedia("(min-width: 50rem)").matches) {
+   if (!window.matchMedia(matchMedia).matches) {
       const tabList = document.querySelector('.nav__box');
       const tabs = [...document.querySelectorAll('.tab-item')];
       const panels = [...document.querySelectorAll('.tab-panel')];
@@ -159,13 +160,10 @@
          if (isInViewport($burgerEl)) {
             $burgerLink.setAttribute("aria-selected", "true");
             $discoverLink.removeAttribute("aria-selected");
-            console.log('true');
          }
          else {
             $discoverLink.setAttribute("aria-selected", "true");
             $burgerLink.removeAttribute("aria-selected");
-            console.log('false');
-
          }
      };
     
@@ -284,6 +282,9 @@
    const startBottom = 80; // начало анимации в процентах для bottom 
    let removeStatus = false; // для проверки в процессе ли удаление
    let removeEls = []; // очередь элементов на удаление
+   // процент для растяжки бургера в десктоп версии
+   const widthPercent = (!window.matchMedia(matchMedia).matches) ? 0.4 : 0;
+   let addWidth;
 
    let addTopBunTimout;
    function addTopBun() {
@@ -304,7 +305,10 @@
       if ($burgerElList.length > 0) {
          addTopBun();
       }
-      if ($scene.querySelector(`[data-name="${buns[0].name}"]`) !== null) removeInrgedient(buns[0]);
+      if ($scene.querySelector(`[data-name="${buns[0].name}"]`) !== null) {
+         removeInrgedient(buns[0]);
+         totalBottom -= buns[0].width;
+      }
 
       const $burgerEl = document.createElement("img");
       const startThisBottom = startBottom + param.width;
@@ -315,12 +319,14 @@
       $burgerEl.setAttribute("data-name", param.name);
       $burgerEl.style.bottom = `${startThisBottom}%`;
       $burgerEl.style.opacity = 0;
-      
+
+      addWidth = param.width * widthPercent;
+
       $scene.appendChild($burgerEl);
       setTimeout(() => {
          $burgerEl.style.bottom = `${totalBottom}%`;
          $burgerEl.style.opacity = 1;
-         totalBottom += param.width;
+         totalBottom += param.width + addWidth;
       }, 1);
    }
 
@@ -329,6 +335,12 @@
          removeEls.push(param);
          return;
       }
+
+      if(addTopBunTimout){
+         clearTimeout(addTopBunTimout);
+         addTopBunTimout = null;
+      }
+      
       removeStatus = true;
       const $burgerEl = $scene.querySelectorAll(`[data-name="${param.name}"]`);
       if ($burgerEl.length > 0) {
@@ -345,11 +357,12 @@
             }
          });
 
-         totalBottom -= param.width;
+         addWidth = param.width * widthPercent;
+         totalBottom -= param.width - addWidth;
 
          for (let i = indexOfRemoveEl + 1; i < $burgerElList.length; i++) {
             const $element = $burgerElList[i];
-            const elWidth = parseInt($element.style.bottom, 10) - param.width;
+            const elWidth = parseInt($element.style.bottom, 10) - param.width - addWidth;
             $element.style.bottom = `${elWidth}%`;
          }
       }

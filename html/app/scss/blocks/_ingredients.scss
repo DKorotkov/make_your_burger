@@ -2,12 +2,23 @@
 
 .ingredients {
    display: flex;
-   flex-wrap: wrap;
-   grid-column: span 2;
-   justify-content: center;
+   gap: rem(8);
+   width: 100%;
+   height: var(--mobile-ingredient-wrapper-height);
+   padding-bottom: var(--mobile-gap);
+   margin-bottom: calc(var(--mobile-checkout-height) + var(--mobile-gap) + var(--mobile-gap));
+   overflow-x: auto;
+   overscroll-behavior-inline: contain;
+   scroll-snap-type: inline mandatory;
 
    @media (min-width: 50rem) {
-       gap: rem(8);
+      padding-bottom: rem(20); 
+      flex-wrap: wrap;
+      grid-column: span 2;
+      justify-content: center;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      height: auto;
    }
 
    @media (min-width: 100rem) {
@@ -31,6 +42,7 @@
    padding: rem(24) rem(18);
    justify-items: center;
    gap: rem(12);
+   scroll-snap-align: start;
 
 		&__img {
          object-fit: contain;

@@ -1,6 +1,10 @@
 @use "__config" as *;
 
 .main {
+   --mobile-gap: 1.1rem;
+   --mobile-ingredient-height: 10rem;
+   --mobile-checkout-height: 7.5rem;
+   --mobile-ingredient-wrapper-height: calc(var(--mobile-ingredient-height) + var(--mobile-gap));
    padding-top: var(--sz-navigation);
    
    @media (min-width: 50rem) {
@@ -10,7 +14,7 @@
    &__container {
       display: flex;
       flex-direction: column;
-      gap: rem(20);
+      gap: var(--mobile-gap);
       @media (min-width: 50rem) {
          display: grid;
          grid-template-columns: auto 1fr;
@@ -23,6 +27,8 @@
    }
 
    &__offer {
-      width: min-content;
+      @media (min-width: 50rem) {
+         width: min-content;
+      }
    }
 }
