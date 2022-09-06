@@ -65,10 +65,10 @@
    <!-- Ссылка на изображение -->
    <meta name="twitter:image" content="img/img1.jpeg" />
 
-   <link rel="stylesheet" href="css/header.min.css?_v=20220906112023" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20220906112023" />
+   <link rel="stylesheet" href="css/header.min.css?_v=20220906150421" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20220906150421" />
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220906112023" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220906150421" rel="stylesheet" />
 
    <!-- Здесь загружается иконочный шрифт, если иконки используються в верхней части страницы -->
    <!-- <link rel="preload" href="/fonts/fontello.woff" as="font" /> -->
@@ -117,13 +117,27 @@
 
          <a class="nav__phone" href="tel:8 800 437-87-22">8 800 437-87-22</a>
 
-         <a class="nav__person" href="#">
+         <button class="nav__person">
             <div class="nav__person-img-wrapper">
                <picture><source srcset="img/user_head.webp" type="image/webp"><img class="nav__person-img-head" src="img/user_head.png" /></picture>
                <div class="nav__person-img-flag nav__person-img-flag--uk"></div>
             </div>
             <span class="nav__person-name">Anthony Thomas</span>
-         </a>
+         </button>
+         <div class="nav__person-menu person-menu msg">
+            <h3 class="person-menu__header">Jerome Porter</h3>
+            <ul class="person-menu__list">
+               <li class="person-menu__item">
+                  <a class="person-menu__link" href="#">Profile</a>
+               </li>
+               <li class="person-menu__item">
+                  <a class="person-menu__link" href="#">Settings</a>
+               </li>
+               <li class="person-menu__item">
+                  <a class="person-menu__link" href="#">Log out</a>
+               </li>
+            </ul>
+         </div>
       </nav>
 
       <button class="header__nav-btn header__icon" data-name="header-modal" data-close="true">
@@ -182,7 +196,7 @@
             </div>
 
             <div id="burger" class="burger tab-panel">
-               <div class="burger__question">
+               <div class="burger__question msg">
                   <picture><source srcset="img/icon-exp.webp" type="image/webp"><img class="burger__question-img" src="img/icon-exp.png" alt=""></picture>
                   You are sure?
                </div>
@@ -279,14 +293,14 @@
    </div>
 </footer>
  <!-- js для загрухки шрифтов по времени, событию или из кэша -->
-<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220906112023"></script> -->
+<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220906150421"></script> -->
 <!-- ленивая загрузка изображений -->
-<!-- <script defer src="js/lazyload.min.js?_v=20220906112023"></script> -->
-<!-- <script src="js/ls.bgset.js?_v=20220906112023"></script> -->
+<!-- <script defer src="js/lazyload.min.js?_v=20220906150421"></script> -->
+<!-- <script src="js/ls.bgset.js?_v=20220906150421"></script> -->
 <!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
-<script src="js/focus-visible.min.js?_v=20220906112023"></script>
+<script src="js/focus-visible.min.js?_v=20220906150421"></script>
 
-<script src="js/script.min.js?_v=20220906112023"></script>
+<script src="js/script.min.js?_v=20220906150421"></script>
 
        <template id="ingredient">
          <li class="ingredient">
