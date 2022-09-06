@@ -1,0 +1,43 @@
+@use "__config" as *;
+
+.person-menu {
+   display: grid;
+   padding: rem(16);
+   gap: rem(16);
+
+		&__header {
+         font-size: var(--fs-16);
+         font-weight: var(--fw-semi-bold);
+         padding-bottom: rem(16);
+         border-bottom: rem(1) solid var(--clr-black-squeeze);
+		}
+
+		&__list {
+		}
+
+		&__item {
+		}
+
+		&__link {
+         display: inline-block;
+         width: 100%;
+         padding: rem(8);
+         font-size: var(--fs-14);
+         border-radius: rem(8);
+         text-decoration: none;
+         color: var(--clr-black);
+		}
+
+      &__link:where(:hover, :focus-visible) {
+         background-color: var(--clr-titan-white);
+         font-weight: var(--fw-semi-bold);
+      }
+
+      &__item:last-child  &__link {
+         color: var(--clr-danger);
+      }
+
+      &__item:last-child  &__link:where(:hover, :focus-visible) {
+         background-color: var(--clr-red-200);
+      }
+}

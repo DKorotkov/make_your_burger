@@ -37,8 +37,8 @@
    // FormValid.init();
    // ------------------------------------------------------
 
-   // -----------Окно мобильной навшицаа-----------------------------
-   m = new ModalDK({
+   // -----------Окно мобильной навигации-----------------------------
+   const m = new ModalDK({
       selector: ".nav",
       openBtnsSelector: ['[data-name="header-modal"]'],
       focusTrap: true, // Требуется ли перемещаться табом только внутри объекта (default: false)
@@ -46,24 +46,9 @@
       activeClass: "--active",
       overlay: false,
       matchMedia: matchMedia,
-
-      // onClose() {
-      //    console.log("modal closing");
-      // },
    });
    // ------------------------------------------------------
-   // -----------Модальное окно-----------------------------
-   // m = new ModalDK({
-   //    selector: "#modal",
-   //    openBtnsSelector: ['[data-name="modal"]'],
-   //    focusTrap: true, // Требуется ли перемещаться табом только внутри объекта (default: false)
-   //    collapseOnFocusOut: false, // Требуется ли закрывать при потери фокуса
-   //    activeClass: "--active",
-   //    onClose() {
-   //       console.log("modal closing");
-   //    },
-   // });
-   // ------------------------------------------------------
+   
 
    // -----------Галерея------------------------------------
 //    g = new GalleryDK({
@@ -373,8 +358,8 @@
    const $burgerQuestion = document.querySelector(".burger__question");
    const toogleShowQuestion = (curKcal) => {
       const maxKcal = 3000;
-      if (curKcal > maxKcal) $burgerQuestion.classList.add("burger__question--show");
-      else $burgerQuestion.classList.remove("burger__question--show");
+      if (curKcal > maxKcal) $burgerQuestion.classList.add("msg--show");
+      else $burgerQuestion.classList.remove("msg--show");
    }
    // ------------------------------------------------------------------
 
@@ -395,6 +380,23 @@
          $ozItem.dataset.value = (parseFloat($ozItem.dataset.value) - parseFloat(ozKetchupValue)).toFixed(1)
       }
    })
+   // ------------------------------------------------------------------
+
+   // -------------------Меню пользователя------------------------------
+   // const personBtn = document.querySelector(".nav__person");
+   // const personMenu = personBtn.querySelector(".person-menu");
+   // personBtn.addEventListener("click", ()=> {
+   //    personMenu.classList.toggle("nav__person-menu--show");
+   // })
+
+   const personNav = new ModalDK({
+      selector: ".nav__person-menu",
+      openBtnsSelector: ['.nav__person'],
+      focusTrap: false, // Требуется ли перемещаться табом только внутри объекта (default: false)
+      collapseOnFocusOut: true, // Требуется ли закрывать при потери фокуса
+      activeClass: "--active",
+      overlay: false,
+   });
    // ------------------------------------------------------------------
 
 
