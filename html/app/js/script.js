@@ -4,20 +4,8 @@
    ("use strict");
    const matchMedia = '(max-width: 50rem)';
 
-   // -------------Загрузка шрифтов через скрипт------------
-   // include('modules/_fonts.js')
-   // ------------------------------------------------------
-
-   // --------------------------------Загузка класса Аккардион----------------------------
-   // include('modules/_accordion.js')
-   // ------------------------------------------------------------------------------------
-
    // --------------------------------Загрузка класса Валидации форм----------------------
-   // @@include('modules/_formValidation.js')
-   // ------------------------------------------------------------------------------------
-
-   // --------------------------------Загрузка класса Событий "касаний"----------------------
-   // include('modules/_eventTouch.js')
+   @@include('modules/_formValidation.js')
    // ------------------------------------------------------------------------------------
 
    // --------------------------------Загрузка класса "Общего класса"----------------------
@@ -28,13 +16,9 @@
    @@include('modules/_modal.js')
    // ------------------------------------------------------------------------------------
 
-   // --------------------------------Загрузка класса "Галереи"----------------------
-   // @@include('modules/_gallery.js')
-   // ------------------------------------------------------------------------------------
-
    
    // -----------Проверка валидация формы-------------------
-   // FormValid.init();
+   FormValid.init();
    // ------------------------------------------------------
 
    // -----------Окно мобильной навигации-----------------------------
@@ -49,14 +33,6 @@
    });
    // ------------------------------------------------------
    
-
-   // -----------Галерея------------------------------------
-//    g = new GalleryDK({
-//    selector: ".gallery", // селектор контейнера, который объединяет все изображения
-//    focusTrap: true,
-//    collapseOnFocusOut: false,
-// });
-
    // ------------Анимация бургера и запуск функций при загрузке--------------------------------
    const $discover = document.querySelector(".discover");
    const $discoverBurger = document.querySelector(".discover__burger");
@@ -182,13 +158,30 @@
          }
       });
       if (param.amount) param.amount.dataset.value++;
-      addBurgerElement(param);
 
-      
+      const $burgerElList = [...$scene.querySelectorAll(".burger__scene-element")];
+      if(addTopBunTimout){
+         clearTimeout(addTopBunTimout);
+         addTopBunTimout = null;
+      }
+      if ($scene.querySelector(`[data-name="${buns[0].name}"]`) !== null) {
+         removeInrgedient(buns[0]);
+      }
+      if ($burgerElList.length > 0) {
+         addTopBun();
+      }
+      addBurgerElement(param);    
    };
 
    const removeInrgedient = (param) => {
-      if (param.amount && parseInt(param.amount.dataset.value) === 0) return;
+      
+      if(addTopBunTimout){
+         clearTimeout(addTopBunTimout);
+         addTopBunTimout = null;
+      }  
+    
+      
+      if (param.amount && parseInt(param.amount.dataset.value) === 0 ) return;
       $price.dataset.price = (parseFloat($price.dataset.price) - param.price).toFixed(2);
       $summData.forEach($data => {
          if ($data.dataset.name === 'min') $data.dataset.value = (parseFloat($data.dataset.value) - param.min).toFixed(0);
@@ -202,6 +195,7 @@
       });
       if (param.amount) param.amount.dataset.value--;
       removeBurgerElement(param);
+     
    };
 
    function loadInrgedients() {
@@ -265,8 +259,6 @@
    const $scene = document.querySelector(".burger__scene");
    let totalBottom = 0; // размер первого блока в процентах для bottom
    const startBottom = 80; // начало анимации в процентах для bottom 
-   let removeStatus = false; // для проверки в процессе ли удаление
-   let removeEls = []; // очередь элементов на удаление
    // процент для растяжки бургера в десктоп версии
    const widthPercent = (!window.matchMedia(matchMedia).matches) ? 0.4 : 0;
    let addWidth;
@@ -282,18 +274,7 @@
    }
 
    function addBurgerElement(param) {
-      const $burgerElList = [...$scene.querySelectorAll(".burger__scene-element")];
-      if(addTopBunTimout){
-         clearTimeout(addTopBunTimout);
-         addTopBunTimout = null;
-      }
-      if ($burgerElList.length > 0) {
-         addTopBun();
-      }
-      if ($scene.querySelector(`[data-name="${buns[0].name}"]`) !== null) {
-         removeInrgedient(buns[0]);
-         totalBottom -= buns[0].width;
-      }
+      
 
       const $burgerEl = document.createElement("img");
       const startThisBottom = startBottom + param.width;
@@ -313,44 +294,34 @@
          $burgerEl.style.opacity = 1;
          totalBottom += param.width + addWidth;
       }, 1);
+      Math.floor(totalBottom);
    }
 
    function removeBurgerElement(param) {
-      if (removeStatus) {
-         removeEls.push(param);
-         return;
-      }
-
-      if(addTopBunTimout){
-         clearTimeout(addTopBunTimout);
-         addTopBunTimout = null;
-      }
-      
-      removeStatus = true;
       const $burgerEl = $scene.querySelectorAll(`[data-name="${param.name}"]`);
-      if ($burgerEl.length > 0) {
+      const $currentEl = $burgerEl[$burgerEl.length - 1];
+      if ($currentEl) {
          const $burgerElList = [...$scene.querySelectorAll(".burger__scene-element")];
-         const indexOfRemoveEl = $burgerElList.indexOf($burgerEl[$burgerEl.length - 1]);
+         const indexOfRemoveEl = $burgerElList.indexOf($currentEl);
 
-         $burgerEl[$burgerEl.length - 1].classList.add("burger__scene-element--delete");
-         $burgerEl[$burgerEl.length - 1].addEventListener("animationend", ()=>{
-            $scene.removeChild($burgerEl[$burgerEl.length - 1]);
-            removeStatus = false;
-            if (removeEls.length > 0) {
-               removeBurgerElement(removeEls[0]);
-               removeEls.shift();
-            }
+         $currentEl.classList.add("burger__scene-element--delete");
+         $currentEl.dataset.name = "delete";
+         $currentEl.addEventListener("animationend", ()=>{
+            $scene.removeChild($currentEl);            
          });
 
          addWidth = param.width * widthPercent;
-         totalBottom -= param.width - addWidth;
+         totalBottom -= (param.width + addWidth);
 
          for (let i = indexOfRemoveEl + 1; i < $burgerElList.length; i++) {
             const $element = $burgerElList[i];
             const elWidth = parseInt($element.style.bottom, 10) - param.width - addWidth;
             $element.style.bottom = `${elWidth}%`;
          }
+            
+         
       }
+      Math.floor(totalBottom);
    }
    // ------------------------------------------------------------------
 
@@ -383,13 +354,7 @@
    // ------------------------------------------------------------------
 
    // -------------------Меню пользователя------------------------------
-   // const personBtn = document.querySelector(".nav__person");
-   // const personMenu = personBtn.querySelector(".person-menu");
-   // personBtn.addEventListener("click", ()=> {
-   //    personMenu.classList.toggle("nav__person-menu--show");
-   // })
-
-   const personNav = new ModalDK({
+     const personNav = new ModalDK({
       selector: ".nav__person-menu",
       openBtnsSelector: ['.nav__person'],
       focusTrap: false, // Требуется ли перемещаться табом только внутри объекта (default: false)
