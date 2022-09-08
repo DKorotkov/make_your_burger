@@ -203,7 +203,7 @@
       const ingredients = document.querySelector('.ingredients');
       let data;
       
-      readFile("../files/data/data.json", function(text){
+      readFile("./files/data/data.json", function(text){
          data = JSON.parse(text);
          data.forEach((el, i) => {
             if (el.auto) {
