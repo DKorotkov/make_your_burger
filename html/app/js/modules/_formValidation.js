@@ -7,20 +7,21 @@ class FormValid {
 
    static init() {
       const defaultOptions = {
-         errorClassName: "appointment-form__error",
-         inputClassName: "input",
+         errorClassName: "form__error",
+         inputClassName: "form__input",
          invalidClassName: "invalid",
+         withValueClassName: "not-empty",
          errors: {
-            required: "Заполните обязательное поле",
-            email: "Пожалуйста, введите правильный email",
-            type: "Не соответствует формату поля",
-            pattern: "Не соответствует формату поля",
-            tooShort: "Слишком короткое",
-            tooLong: "Слишком динное",
-            stepMismatch: "Неверный шаг (введенный диапозон)",
-            rangeUnderflow: "Меньше диапозона",
-            rangeOverflow: "Больше диапозона",
-            customError: "Ошибка",
+            required: "Required field",
+            email: "Please enter the right email",
+            type: "Invalid field format",
+            pattern: "Invalid field format",
+            tooShort: "Too short",
+            tooLong: "Too wild",
+            stepMismatch: "Wrong step (introduced range)",
+            rangeUnderflow: "Less range",
+            rangeOverflow: "More range",
+            customError: "Error",
             badInput: "badInput",
          },
       };
@@ -40,7 +41,10 @@ class FormValid {
             error.setAttribute("aria-live", "polite");
             input.insertAdjacentElement("afterend", error);
 
-            input.addEventListener("blur", (e) => this.validate(e));
+            input.addEventListener("blur", (e) => {
+               this.validate(e);
+               this.isEmpty(e);
+            });
          });
 
          form.addEventListener("submit", (e) => {
@@ -49,13 +53,21 @@ class FormValid {
       });
    }
 
+   // Проверяем пустое ли поле
+   static isEmpty(input) {
+      if (input.target) input = input.target;
+      if (input.value.length > 0) input.classList.add(`${this.options.inputClassName}--${this.options.withValueClassName}`);
+      else input.classList.remove(`${this.options.inputClassName}--${this.options.withValueClassName}`);
+   }
+
    // Проверяем поля на валидацию
    static validate(input) {
       if (input.target) input = input.target;
       const error = input.nextElementSibling;
       // const inputType = input.getAttribute("type");
       // let pattern = input.getAttribute("pattern");
-
+      console.log(input.validity.valid);
+      console.log(input.value);
       if (!input.validity.valid) {
          // Проверка на обязательное поле
          if (input.validity.valueMissing) {

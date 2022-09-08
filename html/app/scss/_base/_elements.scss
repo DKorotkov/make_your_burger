@@ -178,6 +178,14 @@ svg {
    margin-top: 1rem;
 }
 
+button:where([class]) {
+   background-color: transparent;
+   border: none;
+   margin: 0;
+   padding: 0;
+   cursor: pointer;
+}
+
 // __________Класс для работы с переменными___________________
 .fw-regular {
    font-weight: var(--fw-regular);

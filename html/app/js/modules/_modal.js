@@ -31,6 +31,7 @@
       focusTrap: true, // Требуется ли перемещаться табом только внутри объекта (default: false)
       collapseOnFocusOut: true, // Требуется ли закрывать при потери фокуса
       activeClass: "--active",
+      overlayBg: "rgba(0,0,0, 0.5)",
       onClose() {
          console.log("modal closing");
       },

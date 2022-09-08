@@ -65,10 +65,10 @@
    <!-- Ссылка на изображение -->
    <meta name="twitter:image" content="img/img1.jpeg" />
 
-   <link rel="stylesheet" href="css/header.min.css?_v=20220906164414" />
-   <link rel="stylesheet" href="css/style.min.css?_v=20220906164414" />
+   <link rel="stylesheet" href="css/header.min.css?_v=20220908112841" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20220908112841" />
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220906164414" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,600,700,800&_v=20220908112841" rel="stylesheet" />
 
    <!-- Здесь загружается иконочный шрифт, если иконки используються в верхней части страницы -->
    <!-- <link rel="preload" href="/fonts/fontello.woff" as="font" /> -->
@@ -209,7 +209,7 @@
                   <h3 class="burger__header font-h3">Summary</h3>
                   <div class="burger__checkout">
                      <span class="burger__checkout-summ" data-price="0.00"></span>
-                     <button class="burger__checkout-btn">Checkout</button>
+                     <button class="burger__checkout-btn btn-main">Checkout</button>
                      <span class="burger__checkout-gift">Build a <span class="burger__checkout-gift-danger">$10</span> Burger and Get a Gift</span>
                   </div>
 
@@ -239,6 +239,50 @@
 
             <ul class="ingredients">
             </div>
+         </div>
+
+         <div class="checkout-form">
+            <form class="checkout-form__container">
+               <div class="checkout-form__header">
+                  <svg class="checkout-form__header-icon" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#checkout"></use></svg>
+                  <span class="checkout-form__title font-h5">Checkout</span>
+                  <button class="checkout-form__close-btn checkout-form__header-icon" aria-label="close" data-select-last="true" data-close="true">
+                     <svg class="" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#close"></use></svg>  
+                  </button>
+               </div>
+               <div class="checkout-form__main form">
+                  <div class="checkout-form__main-item form__item">
+                     <input class="form__input" type="text" id="name">
+                     <label class="form__label" for="name">Your Name</label>
+                     <svg class="form__input-icon" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#emotion-happy"></use></svg>
+                  </div>
+                  <div class="checkout-form__main-item form__item">
+                     <input class="form__input" type="tel" id="tel" required pattern="[+]{1}7 [(]{1}[0-9]{3}[)]{1} [0-9]{3} [0-9]{4}">
+                     <label class="form__label" for="tel">Phone Number</label>
+                     <svg class="form__input-icon" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#phone"></use></svg>
+                  </div>
+                  <div class="checkout-form__main-item form__item">
+                     <input class="form__input" type="address" id="address" required>
+                     <label class="form__label" for="address">Shipping Address</label>
+                     <svg class="form__input-icon" role="img" aria-label=""><use xlink:href="img/icons/icons.svg#route"></use></svg>
+                  </div>
+                  <div class="checkout-form__main-item form__item" required>
+                     <input class="form__input" list="time" required>
+                        <datalist id="time">
+                           <option value="1:00 PM">
+                           <option value="2:00 PM">
+                           <option value="3:00 PM">
+                           <option value="4:00 PM">
+                           <option value="5:00 PM">
+                        </datalist>
+                     <label class="form__label" for="time">Time to Delivery</label>
+                  </div>
+               </div>
+               <div class="checkout-form__footer">
+                  <button class="checkout-form__btn btn-main btn-main--white" type="button" data-close="true">Cancel</button>
+                  <button class="checkout-form__btn btn-main" type="submit">Checkout</button>
+               </div>
+            </form>
          </div>
       </main>
       <footer class="footer">
@@ -293,14 +337,14 @@
    </div>
 </footer>
  <!-- js для загрухки шрифтов по времени, событию или из кэша -->
-<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220906164414"></script> -->
+<!-- <script src="js/fontfaceobserver.standalone.min.js?_v=20220908112841"></script> -->
 <!-- ленивая загрузка изображений -->
-<!-- <script defer src="js/lazyload.min.js?_v=20220906164414"></script> -->
-<!-- <script src="js/ls.bgset.js?_v=20220906164414"></script> -->
+<!-- <script defer src="js/lazyload.min.js?_v=20220908112841"></script> -->
+<!-- <script src="js/ls.bgset.js?_v=20220908112841"></script> -->
 <!-- Скрипт полифил для корректной работы не стадартного фокуса (focus-visible)  -->
-<script src="js/focus-visible.min.js?_v=20220906164414"></script>
+<script src="js/focus-visible.min.js?_v=20220908112841"></script>
 
-<script src="js/script.min.js?_v=20220906164414"></script>
+<script src="js/script.min.js?_v=20220908112841"></script>
 
        <template id="ingredient">
          <li class="ingredient">
@@ -319,5 +363,4 @@
 
 <!-- 
    TODO:
-   1. проблема при быстром добавлении
  -->

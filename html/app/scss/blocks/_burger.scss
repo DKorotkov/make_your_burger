@@ -79,26 +79,6 @@
       content: "$";
    }
 
-   &__checkout-btn {
-      border-radius: var(--bd-radius);
-      color: var(--clr-white);
-      background-color: var(--clr-primary);
-      font-weight: var(--fw-semi-bold);
-      padding: rem(16) rem(32);
-      border: none;
-      cursor: pointer;
-      transition: background-color .3s ease;
-   }
-
-   &__checkout-btn:not([disabled]):where(:hover, :focus-visible) {
-      background-color: var(--clr-indigo-600);
-   }
-
-   &__checkout-btn:disabled {
-      color: var(--clr-muted);
-      background-color: var(--clr-titan-white);
-   }
-
    &__checkout-gift {
       display: none;
       font-size: var(--fs-14);

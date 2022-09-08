@@ -1,0 +1,89 @@
+@use "__config" as *;
+
+.form {
+   --input-pd-left: 2.75rem;
+
+   &__item:has(.form__input-icon) &__input{
+      padding-left: var(--input-pd-left); 
+   }
+
+   &__label {
+      position: absolute;
+      top: 50%;
+      left: rem(16);
+      translate: 0 -50%;
+      font-size: var(--fs-14);
+      color: var(--clr-muted);
+      pointer-events: none;
+      transition: all .3s ease;
+   }
+
+   &__item:has(.form__input-icon) &__label {
+      left: var(--input-pd-left);
+   }
+
+   &__input:where(:focus, :focus-visible, .form__input--not-empty) ~ &__label {
+      top: rem(12);
+      font-size: var(--fs-12);
+      z-index: 1;
+      
+   }
+
+  
+
+    &__input--invalid ~ &__label {
+      color: var(--clr-danger);
+   }
+
+   &__input {
+      border-radius: rem(16);
+      border: rem(1) solid var(--clr-titan-white);
+      padding: rem(16);
+      font-size: var(--fs-14);
+      font-weight: var(--fw-semi-bold);
+   }
+
+
+   &__input:disabled {
+     background-color: var(--clr-gray-100);
+   }
+
+   &__input--invalid {
+      border-color: var(--clr-danger);
+   }
+
+    &__input--not-empty,
+    &__input:where(:focus, :focus-visible) {
+      padding-top: rem(20);
+      padding-bottom: rem(8);
+   }
+
+   &__input-icon {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: rem(20);
+      height: rem(20);
+      fill: var(--clr-muted);
+      translate: 0 -50%;
+      margin-left: rem(16);
+   }
+
+   &__input:where(:focus, :focus-visible) ~ &__input-icon {
+      fill: var(--clr-primary);
+   }
+
+   &__input--invalid ~ &__input-icon {
+      fill: var(--clr-danger);
+   }
+
+   &__error {
+      position: absolute;
+      bottom: calc(-1 * rem(15));
+      left: calc( var(--input-pd-left)/2);
+      font-size: var(--fs-12);
+      color: var(--clr-danger);
+   }
+
+  
+}

@@ -2,18 +2,34 @@
 
 
 .btn-main {
-   border: rem(1) solid var(--color-black);
-   color: var(--color-white);
-   background-color: var(--color-primary);
-   // border-radius: var(--border-radius);
-   border-radius: 100vmax;
-   padding: rem(20) rem(30);
+   border-radius: var(--bd-radius);
+   color: var(--clr-white);
+   background-color: var(--clr-primary);
+   font-weight: var(--fw-semi-bold);
+   padding: rem(16) rem(32);
+   border: none;
+   cursor: pointer;
+   transition: background-color .3s ease;
+
+   &:not([disabled]):where(:hover, :focus-visible) {
+      background-color: var(--clr-indigo-600);
+   }
+
+   &:disabled {
+      color: var(--clr-muted);
+      background-color: var(--clr-titan-white);
+   }
+
+   &--white {
+      color: var(--clr-primary);
+      background-color: var(--clr-titan-white);
+   }
+
+   &--white:not([disabled]):where(:hover, :focus-visible) {
+      color: var(--clr-white);
+   }
 }
 
-.btn-main:hover,
-.btn-main:focus-visible {
-   
-}
 
 .btn-call {
    display: flex;
