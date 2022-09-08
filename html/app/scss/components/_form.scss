@@ -36,6 +36,7 @@
    }
 
    &__input {
+      outline: none!important;
       border-radius: rem(16);
       border: rem(1) solid var(--clr-titan-white);
       padding: rem(16);
@@ -57,6 +58,7 @@
     &__input:where(:focus, :focus-visible) {
       padding-top: rem(20);
       padding-bottom: rem(8);
+      border-color: var(--clr-primary);
    }
 
    &__input-icon {
