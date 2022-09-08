@@ -64,10 +64,6 @@ class FormValid {
    static validate(input) {
       if (input.target) input = input.target;
       const error = input.nextElementSibling;
-      // const inputType = input.getAttribute("type");
-      // let pattern = input.getAttribute("pattern");
-      console.log(input.validity.valid);
-      console.log(input.value);
       if (!input.validity.valid) {
          // Проверка на обязательное поле
          if (input.validity.valueMissing) {
